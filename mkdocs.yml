@@ -1,6 +1,9 @@
 nav:
-    - Home: 'index.md'
-    - Test: 'test.md'
+    - Home: index.md
+    - OpenGL:
+        - test: OpenGL/test.md
+    - UE4:
+        - test: UE4/test.md
 
 site_name: 梦之斋
 site_description: '梦之斋'
