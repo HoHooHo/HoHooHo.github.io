@@ -8,4 +8,8 @@
 /.stversions
 .vim
 site
-mkdocs.exe
+
+*.pyc
+dist/
+mkdocs_bootswatch.egg-info/
+.tox

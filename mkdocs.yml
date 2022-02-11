@@ -1,7 +1,19 @@
-site_name: 梦之斋
-
 nav:
--   Home: 'index.md'
--   Test: 'test.md'
+    - Home: 'index.md'
+    - Test: 'test.md'
 
-theme: readthedocs
+site_name: 梦之斋
+site_description: '梦之斋'
+
+site_url: https://hohooho.github.io/
+repo_url: https://github.com/HoHooHo/HoHooHo.github.io
+
+theme:
+    name: flatly
+
+markdown_extensions:
+    - toc:
+        permalink: '#'
+
+plugins:
+    - search
