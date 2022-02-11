@@ -6,7 +6,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hohooho.github.io/test/</loc>
+         <loc>https://hohooho.github.io/OpenGL/test/</loc>
+         <lastmod>2022-02-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/UE4/test/</loc>
          <lastmod>2022-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
