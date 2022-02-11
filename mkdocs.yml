@@ -9,7 +9,7 @@ site_url: https://hohooho.github.io/
 repo_url: https://github.com/HoHooHo/HoHooHo.github.io
 
 theme:
-    name: flatly
+    name: slate
 
 markdown_extensions:
     - toc:
