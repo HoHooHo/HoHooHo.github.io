@@ -10,6 +10,7 @@ site_description: '梦之斋'
 
 site_url: https://hohooho.github.io/
 repo_url: https://github.com/HoHooHo/HoHooHo.github.io
+edit_uri: ""
 
 theme:
     name: slate
