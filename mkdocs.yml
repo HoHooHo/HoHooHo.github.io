@@ -2,7 +2,7 @@ nav:
     - Home: index.md
     - markdown: markdown.md
     - OpenGL:
-        - test: OpenGL/test.md
+        - VAO、VBO、EBO: OpenGL/VAO_VBO_EBO.md
     - UE4:
         - test: UE4/test.md
 
