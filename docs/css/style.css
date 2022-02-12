@@ -90,9 +90,15 @@ hr{
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus,
-.bs-sidebar .nav > li > a.active,
 .bs-sidebar .nav > li > a.active:hover,
 .bs-sidebar .nav > li > a.active:focus {
+    font-weight: normal;
+    background-color: transparent;
+    border-right: 1px solid;
+    color: #ffffff;
+}
+
+.bs-sidebar .nav > li > a.active {
     text-decoration: underline;
     font-weight: normal;
     background-color: transparent;
