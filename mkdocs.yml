@@ -1,5 +1,6 @@
 nav:
     - Home: index.md
+    - markdown: markdown.md
     - OpenGL:
         - test: OpenGL/test.md
     - UE4:
@@ -21,6 +22,9 @@ markdown_extensions:
     - markdown_katex:
         no_inline_svg: True
         insert_fonts_css: True
+    - admonition
 
 plugins:
     - search
+    
+    
