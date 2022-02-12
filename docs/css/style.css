@@ -31,3 +31,83 @@ hr{
 	border:0;
 	border-top:1px solid #555555;
 }
+
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+.bs-sidebar.affix {
+    position: -webkit-sticky;
+    position: sticky;
+    /* The nav header is 3.5rem high, plus 20px for the margin-top of the
+       main container. */
+    top: calc(3.5rem + 20px);
+}
+
+.bs-sidebar.card {
+    padding: 0;
+}
+
+.bs-sidebar > .card {
+    background-color: #3a3f44 !important;
+}
+
+/* Toggle (vertically flip) sidebar collapse icon */
+.bs-sidebar .navbar-toggler span {
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
+
+.bs-sidebar .navbar-toggler.collapsed span {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+
+/* First level of nav */
+.bs-sidebar > .navbar-collapse > .nav {
+    padding-top:    10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+    display: block;
+    padding: 5px 20px;
+    z-index: 1;
+    color: #9d9fa2;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus,
+.bs-sidebar .nav > li > a.active,
+.bs-sidebar .nav > li > a.active:hover,
+.bs-sidebar .nav > li > a.active:focus {
+    text-decoration: underline;
+    font-weight: normal;
+    background-color: transparent;
+    border-right: 1px solid;
+    color: #ffffff;
+}
+
+.bs-sidebar .nav .nav .nav {
+    margin-left: 1em;
+}
+
+.bs-sidebar .nav > li > a {
+    font-weight: normal;
+}
+
+.bs-sidebar .nav .nav > li > a {
+    font-weight: normal;
+}
