@@ -29,5 +29,6 @@ plugins:
     
 extra_css:
   - css/admonition_fix.css
+  - css/style.css
     
     
