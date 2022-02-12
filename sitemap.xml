@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hohooho.github.io/markdown/</loc>
+         <lastmod>2022-02-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hohooho.github.io/OpenGL/test/</loc>
          <lastmod>2022-02-12</lastmod>
          <changefreq>daily</changefreq>

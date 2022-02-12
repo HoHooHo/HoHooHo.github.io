@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://hohooho.github.io/markdown/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>markdown - 梦之斋</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">梦之斋</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">markdown</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../OpenGL/test/" class="dropdown-item">test</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../UE4/test/" class="dropdown-item">test</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../OpenGL/test/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#1-markdown" class="nav-link">1. Markdown 标题</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">一级标题</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">二级标题</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#2-markdown" class="nav-link">2. Markdown 段落</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#3-markdown" class="nav-link">3. Markdown 列表</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#4-markdown" class="nav-link">4. Markdown 区块</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#5-markdown" class="nav-link">5. Markdown 代码</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#6-markdown" class="nav-link">6. Markdown 链接</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#7-markdown" class="nav-link">7. Markdown 图片</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#8-markdown" class="nav-link">8. Markdown 表格</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#9-markdown" class="nav-link">9. Markdown 高级技巧</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#10-markdown" class="nav-link">10. Markdown 数学公式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#11-markdown" class="nav-link">11. Markdown 方框</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>0.1. Markdown语法</p>
+<hr />
+<h1 id="1-markdown">1. Markdown 标题<a class="headerlink" href="#1-markdown" title="Permanent link">#</a></h1>
+<h1 id="_1">一级标题<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="_2">二级标题<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<h3 id="_3">三级标题<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h4 id="_4">四级标题<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h5 id="_5">五级标题<a class="headerlink" href="#_5" title="Permanent link">#</a></h5>
+<h6 id="_6">六级标题<a class="headerlink" href="#_6" title="Permanent link">#</a></h6>
+<h1 id="2-markdown">2. Markdown 段落<a class="headerlink" href="#2-markdown" title="Permanent link">#</a></h1>
+<p><em>斜体文本</em><br />
+<em>斜体文本</em><br />
+<strong>粗体文本</strong><br />
+<strong>粗体文本</strong><br />
+<strong><em>粗斜体文本</em></strong><br />
+<strong><em>粗斜体文本</em></strong>  </p>
+<p>分割线</p>
+<hr />
+<p>测试文本<br />
+~~测试文本~~</p>
+<p><u>带下划线文本</u></p>
+<h1 id="3-markdown">3. Markdown 列表<a class="headerlink" href="#3-markdown" title="Permanent link">#</a></h1>
+<p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容。有序列表使用数字并加上 . 号来表示</p>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<hr />
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<hr />
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<hr />
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<p>列表嵌套只需在子列表中的选项前面添加四个空格即可：</p>
+<ol>
+<li>第一项：<ul>
+<li>第一项嵌套的第一个元素</li>
+<li>第一项嵌套的第二个元素</li>
+</ul>
+</li>
+<li>第二项：<ul>
+<li>第二项嵌套的第一个元素</li>
+<li>第二项嵌套的第二个元素</li>
+</ul>
+</li>
+</ol>
+<h1 id="4-markdown">4. Markdown 区块<a class="headerlink" href="#4-markdown" title="Permanent link">#</a></h1>
+<blockquote>
+<p>区块引用<br />
+菜鸟教程<br />
+学的不仅是技术更是梦想  </p>
+<p>最外层  </p>
+<blockquote>
+<p>第一层嵌套  </p>
+<blockquote>
+<p>第二层嵌套  </p>
+</blockquote>
+</blockquote>
+<p>区块中使用列表<br />
+1. 第一项<br />
+2. 第二项<br />
++ 第一项<br />
++ 第二项<br />
++ 第三项  </p>
+</blockquote>
+<ul>
+<li>第一项<br />
+    &gt; 菜鸟教程<br />
+    &gt; 学的不仅是技术更是梦想  </li>
+<li>第二项  </li>
+</ul>
+<h1 id="5-markdown">5. Markdown 代码<a class="headerlink" href="#5-markdown" title="Permanent link">#</a></h1>
+<p><code>printf()</code> 函数</p>
+<pre><code class="language-c++">int a = 0;
+</code></pre>
+<pre><code>int a = 0;
+</code></pre>
+<pre><code class="language-javascript">$(document).ready(function () {
+    alert('RUNOOB');
+});
+</code></pre>
+<h1 id="6-markdown">6. Markdown 链接<a class="headerlink" href="#6-markdown" title="Permanent link">#</a></h1>
+<p>链接使用方法如下：</p>
+<pre><code>[链接名称](链接地址)
+
+或者
+
+&lt;链接地址&gt;
+</code></pre>
+<h1 id="7-markdown">7. Markdown 图片<a class="headerlink" href="#7-markdown" title="Permanent link">#</a></h1>
+<p><img alt="找不到图片时的替代文本" src="/assets/avatar.png" /></p>
+<p><img alt="找不到图片时的替代文本" src="/assets/avatar.png" title="可选标题" /></p>
+<p><img src="http://static.runoob.com/images/runoob-logo.png" width="50%"></p>
+<h1 id="8-markdown">8. Markdown 表格<a class="headerlink" href="#8-markdown" title="Permanent link">#</a></h1>
+<p>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
+<p>我们可以设置表格的对齐方式：</p>
+<ul>
+<li>-: 设置内容和标题栏居右对齐。</li>
+<li>:- 设置内容和标题栏居左对齐。</li>
+<li>:-: 设置内容和标题栏居中对齐。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="right">右对齐</th>
+<th align="center">居中对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+<tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+</tbody>
+</table>
+<h1 id="9-markdown">9. Markdown 高级技巧<a class="headerlink" href="#9-markdown" title="Permanent link">#</a></h1>
+<p>支持的 HTML 元素，不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。</p>
+<pre><code>  目前支持的 HTML 元素有：&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;等
+</code></pre>
+<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
+<p>支持转义字符<br />
+<strong>文本加粗</strong> <br />
+** 正常显示星号 **</p>
+<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<pre><code>\   反斜线
+`   反引号
+*   星号
+_   下划线
+{}  花括号
+[]  方括号
+()  小括号
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   感叹号
+</code></pre>
+<h1 id="10-markdown">10. Markdown 数学公式<a class="headerlink" href="#10-markdown" title="Permanent link">#</a></h1>
+<p>嵌入了Katex的话可以使用数学公式</p>
+<p><a href="https://katex.org/docs/supported.html">https://katex.org/docs/supported.html</a><br />
+<a href="https://katex.org/docs/support_table.html">https://katex.org/docs/support_table.html</a></p>
+<h1 id="11-markdown">11. Markdown 方框<a class="headerlink" href="#11-markdown" title="Permanent link">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>绿色</strong>方框是一些注释或者是对于OpenGL或讨论主题有用的特性/提示。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>红色</strong>方框是一些警告或者一些你需要特别注意的特性。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">译注</p>
+<p><strong>蓝色</strong>方框是翻译时为了帮助读者理解附加的一些信息。</p>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
