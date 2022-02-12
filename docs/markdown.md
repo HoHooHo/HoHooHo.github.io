@@ -16,6 +16,7 @@
 
 <color_r>红色文字</color_r>  
 <color_g>绿色文字</color_g>  
+<color_b>蓝色文字</color_b>  
 <color_y>黄色文字</color_y>  
 
 *斜体文本*  
