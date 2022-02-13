@@ -22,8 +22,7 @@
 - EBO
     - 存储顶点索引
 - VAO
-    - 存储VBO、EBO的引用
-    - 存储顶点的结构定义等
+    - 存储提供顶点数据所需的所有状态
 
 > ![vertex_array_objects_ebo.png](./assets/vertex_array_objects_ebo.png)
 
