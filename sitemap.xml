@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hohooho.github.io/</loc>
-         <lastmod>2022-02-12</lastmod>
+         <lastmod>2022-02-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/Windows%E9%83%A8%E7%BD%B2mkdocs/</loc>
+         <lastmod>2022-02-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hohooho.github.io/markdown/</loc>
-         <lastmod>2022-02-12</lastmod>
+         <lastmod>2022-02-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/OpenGL/Pipeline/</loc>
+         <lastmod>2022-02-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/OpenGL/VAO_VBO_EBO/</loc>
+         <lastmod>2022-02-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hohooho.github.io/OpenGL/test/</loc>
-         <lastmod>2022-02-12</lastmod>
+         <lastmod>2022-02-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hohooho.github.io/UE4/test/</loc>
-         <lastmod>2022-02-12</lastmod>
+         <lastmod>2022-02-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

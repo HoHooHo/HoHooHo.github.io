@@ -20,6 +20,11 @@ color_g {
     color: green;
 }
 
+color_b {
+    color: #66f;
+}
+
+
 color_y {
     color: yellow;
 }
@@ -90,12 +95,18 @@ hr{
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus,
-.bs-sidebar .nav > li > a.active,
 .bs-sidebar .nav > li > a.active:hover,
 .bs-sidebar .nav > li > a.active:focus {
+    font-weight: normal;
+    background-color: #777;
+    border-right: 1px solid;
+    color: #ffffff;
+}
+
+.bs-sidebar .nav > li > a.active {
     text-decoration: underline;
     font-weight: normal;
-    background-color: transparent;
+    background-color: #777;
     border-right: 1px solid;
     color: #ffffff;
 }

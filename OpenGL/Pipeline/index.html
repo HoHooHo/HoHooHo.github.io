@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/UE4/test/">
+        <link rel="canonical" href="https://hohooho.github.io/OpenGL/Pipeline/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>test - 梦之斋</title>
+        <title>Pipeline - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -54,16 +54,16 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+    <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">test</a>
+    <a href="../../UE4/test/" class="dropdown-item">test</a>
 </li>
                                 </ul>
                             </li>
@@ -75,16 +75,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../../OpenGL/VAO_VBO_EBO/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
@@ -106,9 +96,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#welcome-to-ue4" class="nav-link">Welcome to UE4</a>
+            <li class="nav-item" data-level="1"><a href="#pipeline" class="nav-link">Pipeline</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#ue4" class="nav-link">UE4</a>
+            <li class="nav-item" data-level="2"><a href="#opengl-es-32-pipeline" class="nav-link">OpenGL ES 3.2 pipeline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#opengl" class="nav-link">OpenGL 基本图元</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#shader" class="nav-link">Shader</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">参考</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -119,14 +121,28 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-ue4">Welcome to UE4<a class="headerlink" href="#welcome-to-ue4" title="Permanent link">#</a></h1>
-<h2 id="ue4">UE4<a class="headerlink" href="#ue4" title="Permanent link">#</a></h2>
-<ul>
-<li>UE4 1</li>
-<li>UE4 2</li>
-<li>UE4 3</li>
-<li>UE4 4</li>
-</ul></div>
+<h1 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">#</a></h1>
+<h2 id="opengl-es-32-pipeline">OpenGL ES 3.2 pipeline<a class="headerlink" href="#opengl-es-32-pipeline" title="Permanent link">#</a></h2>
+<blockquote>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/pipeline.png" /></p>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/RenderingPipeline.png" /></p>
+</blockquote>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/pipeline1.png" /></p>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/pipeline_32.png" /></p>
+<h2 id="opengl">OpenGL 基本图元<a class="headerlink" href="#opengl" title="Permanent link">#</a></h2>
+<p><img alt="OpenGL primitive.png" src="../assets/opengl_primitive.png" /></p>
+<h2 id="shader">Shader<a class="headerlink" href="#shader" title="Permanent link">#</a></h2>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/vertextshader.png" /></p>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/fragmentshader.png" /></p>
+<p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/per_fragmentoperations.png" /></p>
+<p>none (Default) same as in
+in For parameter passed into a function
+out For values passed out of a function
+inout Function parameters passed in and out</p>
+<h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p><a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview">https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview</a>
+<a href="../assets/opengl45-quick-reference-card.pdf">OpenGL 4.5 Reference Guide</a>
+<a href="../assets/opengles32-quick-reference-card.pdf">OpenGL ES 3.2 Reference Guide</a></p></div>
             </div>
         </div>
 
