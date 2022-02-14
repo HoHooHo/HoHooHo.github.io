@@ -22,7 +22,7 @@
 - EBO
     - 存储顶点索引
 - VAO
-    - 存储提供顶点数据所需的所有状态
+    - 存储缓冲区和顶点属性状态
 
 > ![vertex_array_objects_ebo.png](./assets/vertex_array_objects_ebo.png)
 
