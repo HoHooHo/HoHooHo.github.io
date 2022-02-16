@@ -98,7 +98,7 @@ hr{
 .bs-sidebar .nav > li > a.active:hover,
 .bs-sidebar .nav > li > a.active:focus {
     font-weight: normal;
-    background-color: #777;
+    background-color: #d47d09;
     border-right: 1px solid;
     color: #ffffff;
 }
@@ -106,7 +106,7 @@ hr{
 .bs-sidebar .nav > li > a.active {
     text-decoration: underline;
     font-weight: normal;
-    background-color: #777;
+    background-color: #683e08;
     border-right: 1px solid;
     color: #ffffff;
 }
