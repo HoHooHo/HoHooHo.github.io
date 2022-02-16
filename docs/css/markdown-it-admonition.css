@@ -255,3 +255,22 @@
   ;
   content: "\E244";
 }
+
+
+
+.back .admonition-title {
+  display: none;
+}
+
+.back {
+  display: block;
+  margin: 20px;
+  padding: 15px;
+  color: #444;
+  border-radius: 5px;
+}
+
+.back {
+  background-color: #eeeeee;
+  border: 2px solid #ffffff;
+}
