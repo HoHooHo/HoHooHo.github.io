@@ -5,6 +5,7 @@ nav:
         - VAO、VBO、EBO: OpenGL/VAO_VBO_EBO.md
         - 光照: OpenGL/光照.md
         - 材质: OpenGL/材质.md
+        - 光源: OpenGL/光源.md
     - UE4:
         - test: UE4/test.md
 
@@ -36,5 +37,5 @@ plugins:
     - search
     
 extra_css:
-    - css/admonition_fix.css
+    - css/markdown-it-admonition.css
     - css/style.css

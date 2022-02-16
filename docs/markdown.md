@@ -203,14 +203,42 @@ f(x) = \int_{-\infty}^\infty
 
 # Markdown 方框
 
-!!! important
+!!! summary
+    "summary"
 
-	**绿色**方框是一些注释或者是对于OpenGL或讨论主题有用的特性/提示。
+!!! tip
+    "!!! tip"
+  
+!!! info
+    "!!! info"
+  
+!!! success
+    "!!! success"
+  
+!!! help
+    "!!! help"
 
 !!! attention
+    "!!! attention"
+  
+!!! warning
+    "!!! warning"
+  
+  
+!!! fail
+    "!!! fail"
+  
+!!! danger
+    "!!! danger"
+  
+!!! error
+    "!!! error"
+  
+!!! bug
+    "!!! bug"
+  
+!!! example
+    "!!! example"
 
-	**红色**方框是一些警告或者一些你需要特别注意的特性。
-
-!!! note "备注"
-
-	**蓝色**方框是翻译时为了帮助读者理解附加的一些信息。
+!!! quote
+    "!!! quote"
