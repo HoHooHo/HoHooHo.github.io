@@ -1,4 +1,4 @@
-.important .admonition-title, .attention .admonition-title {
+.important .admonition-title, .attention .admonition-title, .warning .admonition-title, .back .admonition-title {
 	display: none;
 }
 
@@ -18,7 +18,7 @@
 	margin: auto;
 }
 
-.important, .attention {
+.important, .attention, .warning, .back {
 	display: block;
 	margin: 20px;
 	padding: 15px;
@@ -34,6 +34,16 @@
 .attention {
 	background-color: #FFD2D2;
 	border: 2px solid #E0B3B3;
+}
+
+.warning {
+	background-color: #916938;
+	border: 2px solid #d47d09;
+}
+
+.back {
+	background-color: #e3e3e3;
+	border: 2px solid #ffffff;
 }
 
 .note {

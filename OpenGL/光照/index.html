@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://hohooho.github.io/OpenGL/%E5%85%89%E7%85%A7/">
+        <link rel="shortcut icon" href="../../theme/favicon.ico">
+        
+        <title>光照 - 梦之斋</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
+        <link href="../../css/admonition_fix.css" rel="stylesheet">
+        <link href="../../css/style.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+				
+                <a href="../.."><img class="user-avatar" src="../../theme/avatar.png" alt="头像"></a>
+				
+				
+				<!--
+                <a class="navbar-brand" href="../..">梦之斋</a>
+				 -->
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../markdown/" class="nav-link">markdown</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">光照</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../UE4/test/" class="dropdown-item">test</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../VAO_VBO_EBO/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../UE4/test/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">光照</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#ambient-lighting" class="nav-link">环境光照(Ambient Lighting)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#diffuse-lighting" class="nav-link">漫反射光照(Diffuse Lighting)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#specular-lighting" class="nav-link">镜面光照(Specular Lighting)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#demo" class="nav-link">Demo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+  integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+  crossorigin="anonymous" />
+
+<style type="text/css">
+    .katex img {
+      object-fit: fill;
+      padding: unset;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: inherit;
+    }
+</style>
+<h1 id="_1">光照<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p><a href="https://learnopengl-cn.github.io/02%20Lighting/02%20Basic%20Lighting/">参考 https://learnopengl-cn.github.io/02%20Lighting/02%20Basic%20Lighting/</a></p>
+<p>现实世界的光照是极其复杂的，而且会受到诸多因素的影响，这是我们有限的计算能力所无法模拟的。因此OpenGL的光照使用的是简化的模型，对现实的情况进行近似，这样处理起来会更容易一些，而且看起来也差不多一样。</p>
+<p>这些光照模型都是基于我们对光的物理特性的理解。其中一个模型被称为冯氏光照模型(Phong Lighting Model)。</p>
+<p>冯氏光照模型的主要结构由3个分量组成：环境(Ambient)、漫反射(Diffuse)和镜面(Specular)光照</p>
+<ul>
+<li>环境光照(Ambient Lighting)：即使在黑暗的情况下，世界上通常也仍然有一些光亮（月亮、远处的光），所以物体几乎永远不会是完全黑暗的。为了模拟这个，我们会使用一个环境光照常量，它永远会给物体一些颜色。</li>
+<li>漫反射光照(Diffuse Lighting)：模拟光源对物体的方向性影响(Directional Impact)。它是冯氏光照模型中视觉上最显著的分量。物体的某一部分越是正对着光源，它就会越亮。</li>
+<li>镜面光照(Specular Lighting)：模拟有光泽物体上面出现的亮点。镜面光照的颜色相比于物体的颜色会更倾向于光的颜色。</li>
+</ul>
+<p><img alt="冯氏光照模型(Phong Lighting Model).png" src="../assets/basic_lighting_phong.png" /></p>
+<h2 id="ambient-lighting">环境光照(Ambient Lighting)<a class="headerlink" href="#ambient-lighting" title="Permanent link">#</a></h2>
+<pre><code class="language-c">    void main()
+    {
+        float ambientStrength = 0.1;    //环境因子
+        vec3 ambient = ambientStrength * lightColor;
+
+        vec3 result = ambient * objectColor;
+        FragColor = vec4(result, 1.0);
+    }
+</code></pre>
+<h2 id="diffuse-lighting">漫反射光照(Diffuse Lighting)<a class="headerlink" href="#diffuse-lighting" title="Permanent link">#</a></h2>
+<p>漫反射光照使物体上与光线方向越接近的片段(光线和片段的角度越小)越能从光源处获得更多的亮度，如果光线垂直于物体表面，这束光对物体的影响会最大化（即达到最亮）。为了能够更好的理解漫反射光照，请看下图：</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="diffuse_light.png" src="../assets/diffuse_light.png" /></p>
+</div>
+<h3 id="normal-vector">法向量(Normal Vector)<a class="headerlink" href="#normal-vector" title="Permanent link">#</a></h3>
+<p>为了测量光线和片段的角度，我们使用法向量(Normal Vector)，它是一个垂直于顶点表面的（单位）向量（上图中以黄色箭头表示），这两个向量之间的角度很容易就能够通过点乘计算出来。可以使用法线贴图来存储顶点的法线。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>l: 光照向量<br />
+n: 法线向量  </p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>L</mi><mo>ˉ</mo></mover><mo>⋅</mo><mover accent="true"><mi>N</mi><mo>ˉ</mo></mover></mrow><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mover accent="true"><mi>L</mi><mo>ˉ</mo></mover><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mover accent="true"><mi>N</mi><mo>ˉ</mo></mover><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+ \cos \theta = \frac{\bar{L} \cdot \bar{N}}{||\bar{L}|| \cdot ||\bar{N}||}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4572em;vertical-align:-0.9601em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4971em;"><span style="top:-2.2899em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣∣</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">L</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">∣∣</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord">∣∣</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">L</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9601em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+</div>
+<pre><code class="language-c">    //两个向量之间的角度大于90度时，点乘结果为负数，导致漫反射分量为负数。负数颜色的光照没有意义。
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = diff * lightColor;
+    vec3 result = (ambient + diffuse) * objectColor;
+    FragColor = vec4(result, 1.0);
+</code></pre>
+<h3 id="normal-matrix">法线矩阵(Normal Matrix)<a class="headerlink" href="#normal-matrix" title="Permanent link">#</a></h3>
+<p>当应用一个不等比缩放时，法向量就不会再垂直于对应的表面，这样光照就会被破坏。修复这个行为的诀窍是使用一个为法向量专门定制的模型矩阵。这个矩阵称之为<a href="http://www.lighthouse3d.com/tutorials/glsl-tutorial/the-normal-matrix/">法线矩阵(Normal Matrix)</a>。它使用了一些线性代数的操作来移除对法向量错误缩放的影响。</p>
+<p>法线矩阵被定义为「模型矩阵的逆矩阵的转置矩阵」</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="basic_lighting_normal_transformation.png" src="../assets/basic_lighting_normal_transformation.png" /></p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>即使是对于着色器来说，逆矩阵也是一个开销比较大的运算，因此，应该避免在着色器中进行逆矩阵运算，在绘制之前最好用CPU计算出法线矩阵，然后通过uniform把值传递给着色器。</p>
+</div>
+<h2 id="specular-lighting">镜面光照(Specular Lighting)<a class="headerlink" href="#specular-lighting" title="Permanent link">#</a></h2>
+<p>和漫反射光照一样，镜面光照也是光的方向向量和物体的法向量来决定的。镜面光照是基于光的反射特性（反射角等于入射角）。</p>
+<p><img alt="reflecting.jpg" src="../assets/reflecting.jpg" /></p>
+<p>但是它也依赖于观察方向，反射向量和视线方向的夹角越小，镜面光的影响就会越大（形成高光）。</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="basic_lighting_specular_theory.png" src="../assets/basic_lighting_specular_theory.png" /></p>
+</div>
+<pre><code class="language-c">    float specularStrength = 0.5;
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    //32次幂。这个32是高光的反光度(Shininess)。
+    //一个物体的反光度越高，反射光的能力越强，散射得越少，高光点就会越小。
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+    vec3 specular = specularStrength * spec * lightColor;
+    vec3 result = (ambient + diffuse + specular) * objectColor;
+    FragColor = vec4(result, 1.0);
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">不同 反光度 的视觉效果影响</p>
+<p><img alt="basic_lighting_specular_shininess.png" src="../assets/basic_lighting_specular_shininess.png" /></p>
+</div>
+<h2 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h2>
+<pre><code class="language-c">    //fragment shader
+    #version 330 core
+    out vec4 FragColor;
+
+    in vec3 Normal;  
+    in vec3 FragPos;  
+
+    uniform vec3 lightPos; 
+    uniform vec3 viewPos; 
+    uniform vec3 lightColor;
+    uniform vec3 objectColor;
+
+    void main()
+    {
+        // ambient
+        float ambientStrength = 0.1;
+        vec3 ambient = ambientStrength * lightColor;
+
+        // diffuse 
+        vec3 norm = normalize(Normal);
+        vec3 lightDir = normalize(lightPos - FragPos);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 diffuse = diff * lightColor;
+
+        // specular
+        float specularStrength = 0.5;
+        vec3 viewDir = normalize(viewPos - FragPos);
+        vec3 reflectDir = reflect(-lightDir, norm);  
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+        vec3 specular = specularStrength * spec * lightColor;  
+
+        vec3 result = (ambient + diffuse + specular) * objectColor;
+        FragColor = vec4(result, 1.0);
+    } 
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
