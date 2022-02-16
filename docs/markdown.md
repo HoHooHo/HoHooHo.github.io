@@ -205,6 +205,12 @@ f(x) = \int_{-\infty}^\infty
 
 !!! summary
     "summary"
+  
+!!! example
+    "!!! example"
+
+!!! quote
+    "!!! quote"
 
 !!! tip
     "!!! tip"
@@ -236,9 +242,3 @@ f(x) = \int_{-\infty}^\infty
   
 !!! bug
     "!!! bug"
-  
-!!! example
-    "!!! example"
-
-!!! quote
-    "!!! quote"

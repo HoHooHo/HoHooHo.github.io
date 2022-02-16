@@ -24,7 +24,8 @@
 - VAO
     - 存储缓冲区和顶点属性状态
 
-> ![vertex_array_objects_ebo.png](./assets/vertex_array_objects_ebo.png)
+!!! back
+    ![vertex_array_objects_ebo.png](./assets/vertex_array_objects_ebo.png)
 
 ``` c
 // set up vertex data (and buffer(s)) and configure vertex attributes
