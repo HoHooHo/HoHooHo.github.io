@@ -33,7 +33,7 @@ markdown_extensions:
         permalink: '#'
 
 extra_javascript:
-    - custom_theme/MathJax.js
+    - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML'
 
 plugins:
     - search
