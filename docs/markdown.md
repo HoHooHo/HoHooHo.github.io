@@ -186,15 +186,15 @@ _   下划线
 # Markdown 数学公式
 嵌入了Katex的话可以使用数学公式
 
-```math
+$$
 f(x) = \int_{-\infty}^\infty
     \hat f(\xi)\,e^{2 \pi i \xi x}
     \,d\xi
-```
+$$
 
-```math
+$$
 \bar{v} = \begin{pmatrix} \color{red}x \\ \color{green}y \\ \color{blue}z \end{pmatrix}
-```
+$$
 
 
 <https://katex.org/docs/supported.html>  

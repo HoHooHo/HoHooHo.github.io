@@ -25,7 +25,17 @@ pip install mkdocs-bootswatch
 cmd 执行命令
 
 ```
-pip install mkdocs
+pip install markdown_katex
+
+pip install python-markdown-math
 ```
 
 # 部署到 Github
+
+
+
+
+    - markdown_katex:
+        no_inline_svg: True
+        insert_fonts_css: True
+    - admonition
