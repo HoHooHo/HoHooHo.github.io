@@ -203,42 +203,41 @@ $$
 
 # Markdown 方框
 
-!!! summary
-    "summary"
+!!! summary "summary"
+    "!!! summary "summary""
   
-!!! example
-    "!!! example"
+!!! example "example"
+    "!!! example "example""
 
-!!! quote
-    "!!! quote"
+!!! quote "quote"
+    "!!! quote "quote""
 
-!!! tip
-    "!!! tip"
+!!! tip "tip"
+    "!!! tip "tip""
   
-!!! info
-    "!!! info"
+!!! info "info"
+    "!!! info "info""
   
-!!! success
-    "!!! success"
+!!! success "success"
+    "!!! success "success""
   
-!!! help
-    "!!! help"
+!!! help "help"
+    "!!! help "help""
 
-!!! attention
-    "!!! attention"
+!!! attention "attention"
+    "!!! attention "attention""
   
-!!! warning
-    "!!! warning"
+!!! warning "warning"
+    "!!! warning "warning""
   
+!!! fail "fail"
+    "!!! fail "fail""
   
-!!! fail
-    "!!! fail"
+!!! danger "danger"
+    "!!! danger "danger""
   
-!!! danger
-    "!!! danger"
+!!! error "error"
+    "!!! error "error""
   
-!!! error
-    "!!! error"
-  
-!!! bug
-    "!!! bug"
+!!! bug "bug"
+    "!!! bug "bug""
