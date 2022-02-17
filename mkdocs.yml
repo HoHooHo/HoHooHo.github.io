@@ -23,6 +23,7 @@ edit_uri: ""
 
 theme:
     name: slate
+    locale: zh
     custom_dir: custom_theme/
 
 markdown_extensions:
@@ -32,7 +33,7 @@ markdown_extensions:
         permalink: '#'
 
 extra_javascript:
-    - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML'
+    - custom_theme/MathJax.js
 
 plugins:
     - search
