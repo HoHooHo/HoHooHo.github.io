@@ -14,7 +14,7 @@
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
-        <link href="../../css/admonition_fix.css" rel="stylesheet">
+        <link href="../../css/markdown-it-admonition.css" rel="stylesheet">
         <link href="../../css/style.css" rel="stylesheet">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
@@ -60,6 +60,14 @@
 <li>
     <a href="./" class="dropdown-item active">光照</a>
 </li>
+                                    
+<li>
+    <a href="../%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="../%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -85,7 +93,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../UE4/test/" class="nav-link">
+                                <a rel="next" href="../%E6%9D%90%E8%B4%A8/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -135,21 +143,6 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-  integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
-  crossorigin="anonymous" />
-
-<style type="text/css">
-    .katex img {
-      object-fit: fill;
-      padding: unset;
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: inherit;
-    }
-</style>
 <h1 id="_1">光照<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
 <p><a href="https://learnopengl-cn.github.io/02%20Lighting/02%20Basic%20Lighting/">参考 https://learnopengl-cn.github.io/02%20Lighting/02%20Basic%20Lighting/</a></p>
 <p>现实世界的光照是极其复杂的，而且会受到诸多因素的影响，这是我们有限的计算能力所无法模拟的。因此OpenGL的光照使用的是简化的模型，对现实的情况进行近似，这样处理起来会更容易一些，而且看起来也差不多一样。</p>
@@ -179,13 +172,19 @@
 </div>
 <h3 id="normal-vector">法向量(Normal Vector)<a class="headerlink" href="#normal-vector" title="Permanent link">#</a></h3>
 <p>为了测量光线和片段的角度，我们使用法向量(Normal Vector)，它是一个垂直于顶点表面的（单位）向量（上图中以黄色箭头表示），这两个向量之间的角度很容易就能够通过点乘计算出来。可以使用法线贴图来存储顶点的法线。</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>l: 光照向量<br />
-n: 法线向量  </p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>L</mi><mo>ˉ</mo></mover><mo>⋅</mo><mover accent="true"><mi>N</mi><mo>ˉ</mo></mover></mrow><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mover accent="true"><mi>L</mi><mo>ˉ</mo></mover><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mover accent="true"><mi>N</mi><mo>ˉ</mo></mover><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
- \cos \theta = \frac{\bar{L} \cdot \bar{N}}{||\bar{L}|| \cdot ||\bar{N}||}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4572em;vertical-align:-0.9601em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4971em;"><span style="top:-2.2899em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣∣</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">L</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">∣∣</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord">∣∣</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">L</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9601em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<div class="admonition info">
+<p class="admonition-title">向量夹角</p>
+<p>
+<script type="math/tex">\bar{L}</script>: 光照向量<br />
+<script type="math/tex">\bar{N}</script>: 法线向量<br />
+||<script type="math/tex">\bar{L}</script>||: 光照向量的模<br />
+||<script type="math/tex">\bar{N}</script>||: 法线向量的模  </p>
+<p>
+<script type="math/tex; mode=display">
+    \cos \theta = \frac{\bar{L} \cdot \bar{N}}{||\bar{L}|| \cdot ||\bar{N}||}
+</script>
+</p>
+<p>注：可以将 <script type="math/tex">\bar{L}</script>和<script type="math/tex">\bar{N}</script> 转换为单位向量，这样 ||<script type="math/tex">\bar{L}</script>||和||<script type="math/tex">\bar{N}</script>|| 均为1</p>
 </div>
 <pre><code class="language-c">    //两个向量之间的角度大于90度时，点乘结果为负数，导致漫反射分量为负数。负数颜色的光照没有意义。
     float diff = max(dot(norm, lightDir), 0.0);
@@ -201,7 +200,7 @@ n: 法线向量  </p>
 <p><img alt="basic_lighting_normal_transformation.png" src="../assets/basic_lighting_normal_transformation.png" /></p>
 </div>
 <div class="admonition attention">
-<p class="admonition-title">Attention</p>
+<p class="admonition-title">注意</p>
 <p>即使是对于着色器来说，逆矩阵也是一个开销比较大的运算，因此，应该避免在着色器中进行逆矩阵运算，在绘制之前最好用CPU计算出法线矩阵，然后通过uniform把值传递给着色器。</p>
 </div>
 <h2 id="specular-lighting">镜面光照(Specular Lighting)<a class="headerlink" href="#specular-lighting" title="Permanent link">#</a></h2>
@@ -222,7 +221,7 @@ n: 法线向量  </p>
     vec3 result = (ambient + diffuse + specular) * objectColor;
     FragColor = vec4(result, 1.0);
 </code></pre>
-<div class="admonition note">
+<div class="admonition example">
 <p class="admonition-title">不同 反光度 的视觉效果影响</p>
 <p><img alt="basic_lighting_specular_shininess.png" src="../assets/basic_lighting_specular_shininess.png" /></p>
 </div>
@@ -274,6 +273,7 @@ n: 法线向量  </p>
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">

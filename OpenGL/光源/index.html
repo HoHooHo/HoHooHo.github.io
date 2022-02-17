@@ -9,12 +9,12 @@
         <link rel="canonical" href="https://hohooho.github.io/OpenGL/%E5%85%89%E6%BA%90/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>材质 - 梦之斋</title>
+        <title>光源 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
-        <link href="../../css/admonition_fix.css" rel="stylesheet">
+        <link href="../../css/markdown-it-admonition.css" rel="stylesheet">
         <link href="../../css/style.css" rel="stylesheet">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
@@ -49,7 +49,7 @@
                             <li class="navitem">
                                 <a href="../../markdown/" class="nav-link">markdown</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -59,6 +59,14 @@
                                     
 <li>
     <a href="../%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+</li>
+                                    
+<li>
+    <a href="../%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">光源</a>
 </li>
                                 </ul>
                             </li>
@@ -80,6 +88,16 @@
                             </a>
                         </li>
                             <li class="nav-item">
+                                <a rel="prev" href="../%E6%9D%90%E8%B4%A8/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../UE4/test/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
                     </ul>
@@ -100,8 +118,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">材质</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">光源</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#directional-light" class="nav-link">定向光源(Directional Light)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#point-light" class="nav-link">点光源(Point Light)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#spot-light" class="nav-link">聚光源(Spot Light)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#shader" class="nav-link">多光源 Shader</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -109,8 +143,102 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">材质<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
-<p>https://learnopengl-cn.github.io/02%20Lighting/05%20Light%20casters/</p>
+<h1 id="_1">光源<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p><a href="https://learnopengl-cn.github.io/02%20Lighting/05%20Light%20casters/">参考 https://learnopengl-cn.github.io/02%20Lighting/05%20Light%20casters/</a></p>
+<h2 id="directional-light">定向光源(Directional Light)<a class="headerlink" href="#directional-light" title="Permanent link">#</a></h2>
+<p>当一个光源处于很远的地方时，来自光源的每条光线就会近似于互相平行。不论物体和观察者在什么位置，看起来好像所有的光都来自于同一个方向。当我们使用一个假设光源处于无限远处的模型时，它就被称为定向光，因为所有的光线都是平行的，所以物体与光源的相对位置就不重要了。适用于模拟太阳光。</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="light_casters_directional.png" src="../assets/light_casters_directional.png" /></p>
+</div>
+<p>我们可以定义一个方向向量而不是位置向量来模拟一个定向光</p>
+<pre><code class="language-c">struct Light {
+    // vec3 position; // 使用定向光就不再需要了
+    vec3 direction;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+...
+void main()
+{
+  vec3 lightDir = normalize(-light.direction);
+  ...
+}
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>我们目前使用的光照计算需要一个从片段至光源的光线方向，但人们更习惯定义定向光为一个从光源出发的全局方向。所以我们需要对全局光照方向向量取反来改变它的方向。</p>
+</div>
+<h2 id="point-light">点光源(Point Light)<a class="headerlink" href="#point-light" title="Permanent link">#</a></h2>
+<p>点光源是处于世界中某一个位置的光源，它会朝着所有方向发光，但光线会随着距离逐渐衰减。适用于模拟灯泡。</p>
+<h3 id="_2">衰减<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>衰减(Attenuation)：随着光线传播距离的增长逐渐削减光的强度。</p>
+<p>在现实世界中，灯泡在近处通常会非常亮，但随着距离的增加光源的亮度一开始会下降非常快，但在远处时剩余的光强度就会下降的非常缓慢了。</p>
+<div class="admonition info">
+<p class="admonition-title">衰减公式</p>
+<p>
+<script type="math/tex; mode=display">
+F_{att} = \frac{1.0}{K_c + K_l * d + K_q * d^2}
+</script>
+</p>
+<p>d：片段到光源的距离<br />
+<script type="math/tex">K_c</script>：常数项。通常为1.0，它的主要作用是保证分母永远大于1，否则在某些距离上它反而会增加强度。<br />
+<script type="math/tex">K_l</script>：一次项。与距离值相乘，保证光以线性的方式减少强度。<br />
+<script type="math/tex">K_q</script>：二次项。与距离的平方相乘，在距离比较小的时候影响会比一次项小很多，但当距离值比较大的时候它就会比一次项更大了。</p>
+</div>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p>下图可以看到光在近距离的时候有着最高的强度，但随着距离增长，它的强度明显减弱，并缓慢地在距离大约100的时候强度接近0</p>
+<p><img alt="attenuation.png" src="../assets/attenuation.png" /></p>
+<p><img alt="light_casters_point.png" src="../assets/light_casters_point.png" /></p>
+</div>
+<pre><code class="language-c">struct Light {
+    vec3 position;  
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+//...省略部分代码
+
+void main()
+{
+    // ambient
+    vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;
+
+    // diffuse 
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(light.position - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
+
+    // specular
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);  
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;  
+
+    // attenuation
+    float distance    = length(light.position - FragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+
+    ambient  *= attenuation;  
+    diffuse   *= attenuation;
+    specular *= attenuation;   
+
+    vec3 result = ambient + diffuse + specular;
+    FragColor = vec4(result, 1.0);
+} 
+</code></pre>
+<h4 id="_3">常用数值<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<p><a href="https://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation">Ogre3D的Wiki</a></p>
 <table>
 <thead>
 <tr>
@@ -194,7 +322,242 @@
 <td>0.000007</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h2 id="spot-light">聚光源(Spot Light)<a class="headerlink" href="#spot-light" title="Permanent link">#</a></h2>
+<p>聚光源是从锥形空间中的一个单独的点处发出光照的光源。适用于模拟手电筒。</p>
+<p>OpenGL中聚光是用一个世界空间位置、一个方向和一个切光角(Cutoff Angle)来表示的，切光角指定了聚光的半径（圆锥的半径）。</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="light_casters_spotlight_angles.png" src="../assets/light_casters_spotlight_angles.png" /></p>
+<ul>
+<li><code>LightDir</code>：从片段指向光源的向量。</li>
+<li><code>SpotDir</code>：聚光所指向的方向。</li>
+<li><code>Phi</code><script type="math/tex">\phi</script>：指定了聚光半径的切光角。落在这个角度之外的物体都不会被这个聚光所照亮。</li>
+<li><code>Theta</code><script type="math/tex">\theta</script>：向量 <script type="math/tex">\bar{LightDir}</script>和<script type="math/tex">\bar{SpotDir}</script> 之间的夹角。在聚光源内部的话<script type="math/tex">\theta</script>值应该比<script type="math/tex">\phi</script>值小。</li>
+</ul>
+</div>
+<p>所以我们要做的就是计算向量 <script type="math/tex">\bar{LightDir}</script>和<script type="math/tex">\bar{SpotDir}</script> 的点积，并将它与切光角 <script type="math/tex">\phi</script> 对比。</p>
+<h3 id="_4">平滑/软化边缘<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>为了创建一种看起来边缘平滑的聚光，我们需要模拟聚光源有一个内圆锥(Inner Cone)和一个外圆锥(Outer Cone),让光从内圆锥逐渐减暗，直到外圆锥的边界。</p>
+<ul>
+<li>如果片段在 内圆锥之内，它的强度是 1.0</li>
+<li>如果片段在 外圆锥之外，它的强度是 0.0</li>
+<li>如果片段在 内外圆锥之间，它的强度是 0.0 ~ 1.0</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">强度公式</p>
+<p>
+<script type="math/tex; mode=display">
+    I = \frac{cos\theta - cos\gamma}{cos\phi - cos\gamma}
+</script>
+</p>
+<p>
+<script type="math/tex">\theta</script>：向量 <script type="math/tex">\bar{LightDir}</script>和<script type="math/tex">\bar{SpotDir}</script> 之间的夹角<br />
+<script type="math/tex">\phi</script>：聚光半径的<strong>内切光角</strong><br />
+<script type="math/tex">\gamma</script>：聚光半径的<strong>外切光角</strong><br />
+<script type="math/tex">I</script>：在当前片段聚光的强度  </p>
+</div>
+<pre><code class="language-c">struct Light {
+    vec3 position;  
+    vec3 direction;
+    float cutOff;
+    float outerCutOff;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+//... 省略部分代码
+
+void main()
+{
+    // ambient
+    vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;
+
+    // diffuse 
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(light.position - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
+
+    // specular
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);  
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;  
+
+    // spotlight (soft edges)
+    float theta = dot(lightDir, normalize(-light.direction)); 
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    diffuse  *= intensity;
+    specular *= intensity;
+
+    // attenuation
+    float distance    = length(light.position - FragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    ambient  *= attenuation; 
+    diffuse   *= attenuation;
+    specular *= attenuation;   
+
+    vec3 result = ambient + diffuse + specular;
+    FragColor = vec4(result, 1.0);
+} 
+</code></pre>
+<h2 id="shader">多光源 Shader<a class="headerlink" href="#shader" title="Permanent link">#</a></h2>
+<pre><code class="language-c">#version 330 core
+out vec4 FragColor;
+
+struct Material {
+    sampler2D diffuse;
+    sampler2D specular;
+    float shininess;
+}; 
+
+struct DirLight {
+    vec3 direction;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+struct PointLight {
+    vec3 position;
+
+    float constant;
+    float linear;
+    float quadratic;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+struct SpotLight {
+    vec3 position;
+    vec3 direction;
+    float cutOff;
+    float outerCutOff;
+
+    float constant;
+    float linear;
+    float quadratic;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;       
+};
+
+#define NR_POINT_LIGHTS 4
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+uniform vec3 viewPos;
+uniform DirLight dirLight;
+uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform SpotLight spotLight;
+uniform Material material;
+
+// function prototypes
+vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir);
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
+vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
+
+void main()
+{    
+    // properties
+    vec3 norm = normalize(Normal);
+    vec3 viewDir = normalize(viewPos - FragPos);
+
+    // == =====================================================
+    // Our lighting is set up in 3 phases: directional, point lights and an optional flashlight
+    // For each phase, a calculate function is defined that calculates the corresponding color
+    // per lamp. In the main() function we take all the calculated colors and sum them up for
+    // this fragment's final color.
+    // == =====================================================
+    // phase 1: directional lighting
+    vec3 result = CalcDirLight(dirLight, norm, viewDir);
+    // phase 2: point lights
+    for(int i = 0; i &lt; NR_POINT_LIGHTS; i++)
+        result += CalcPointLight(pointLights[i], norm, FragPos, viewDir);    
+    // phase 3: spot light
+    result += CalcSpotLight(spotLight, norm, FragPos, viewDir);    
+
+    FragColor = vec4(result, 1.0);
+}
+
+// calculates the color when using a directional light.
+vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
+{
+    vec3 lightDir = normalize(-light.direction);
+    // diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+    // specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // combine results
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));
+    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords));
+    vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords));
+    return (ambient + diffuse + specular);
+}
+
+// calculates the color when using a point light.
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
+{
+    vec3 lightDir = normalize(light.position - fragPos);
+    // diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+    // specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // attenuation
+    float distance = length(light.position - fragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    // combine results
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));
+    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords));
+    vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords));
+    ambient *= attenuation;
+    diffuse *= attenuation;
+    specular *= attenuation;
+    return (ambient + diffuse + specular);
+}
+
+// calculates the color when using a spot light.
+vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
+{
+    vec3 lightDir = normalize(light.position - fragPos);
+    // diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+    // specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    // attenuation
+    float distance = length(light.position - fragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    // spotlight intensity
+    float theta = dot(lightDir, normalize(-light.direction)); 
+    float epsilon = light.cutOff - light.outerCutOff;
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    // combine results
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));
+    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords));
+    vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords));
+    ambient *= attenuation * intensity;
+    diffuse *= attenuation * intensity;
+    specular *= attenuation * intensity;
+    return (ambient + diffuse + specular);
+}
+</code></pre></div>
             </div>
         </div>
 
@@ -207,6 +570,7 @@
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">

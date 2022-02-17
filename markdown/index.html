@@ -14,7 +14,7 @@
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
-        <link href="../css/admonition_fix.css" rel="stylesheet">
+        <link href="../css/markdown-it-admonition.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
@@ -59,6 +59,14 @@
                                     
 <li>
     <a href="../OpenGL/%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+</li>
+                                    
+<li>
+    <a href="../OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="../OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
 </li>
                                 </ul>
                             </li>
@@ -169,21 +177,6 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-  integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
-  crossorigin="anonymous" />
-
-<style type="text/css">
-    .katex img {
-      object-fit: fill;
-      padding: unset;
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: inherit;
-    }
-</style>
 <h1 id="markdown">Markdown 标题<a class="headerlink" href="#markdown" title="Permanent link">#</a></h1>
 <pre><code># 一级标题
 ## 二级标题
@@ -356,28 +349,72 @@ _   下划线
 </code></pre>
 <h1 id="markdown_9">Markdown 数学公式<a class="headerlink" href="#markdown_9" title="Permanent link">#</a></h1>
 <p>嵌入了Katex的话可以使用数学公式</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><mover accent="true"><mi>f</mi><mo>^</mo></mover><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo><mtext> </mtext><msup><mi>e</mi><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>ξ</mi><mi>x</mi></mrow></msup><mtext> </mtext><mi>d</mi><mi>ξ</mi></mrow><annotation encoding="application/x-tex">
+<p>
+<script type="math/tex; mode=display">
 f(x) = \int_{-\infty}^\infty
     \hat f(\xi)\,e^{2 \pi i \xi x}
     \,d\xi
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3846em;vertical-align:-0.9703em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9703em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9579em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0833em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04601em;">ξ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight">πi</span><span class="mord mathnormal mtight" style="margin-right:0.04601em;">ξ</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.04601em;">ξ</span></span></span></span></span></p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>v</mi><mo>ˉ</mo></mover><mo>=</mo><mrow><mo fence="true">(</mo><mtable rowspacing="0.16em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle mathcolor="red"><mi>x</mi></mstyle></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle mathcolor="green"><mi>y</mi></mstyle></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle mathcolor="blue"><mi>z</mi></mstyle></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
 \bar{v} = \begin{pmatrix} \color{red}x \\ \color{green}y \\ \color{blue}z \end{pmatrix}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.6em;vertical-align:-1.55em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-2.25em;"><span class="pstrut" style="height:3.155em;"></span><span class="delimsizinginner delim-size4"><span>⎝</span></span></span><span style="top:-3.397em;"><span class="pstrut" style="height:3.155em;"></span><span style="height:0.016em;width:0.875em;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPScwLjg3NWVtJyBoZWlnaHQ9JzAuMDE2ZW0nIHN0eWxlPSd3aWR0aDowLjg3NWVtJyB2aWV3Qm94PScwIDAgODc1IDE2JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSd4TWluWU1pbic+PHBhdGggZD0nTTI5MSAwIEg0MTcgVjE2IEgyOTF6IE0yOTEgMCBINDE3IFYxNiBIMjkxeicvPjwvc3ZnPg=="/></span></span><span style="top:-4.05em;"><span class="pstrut" style="height:3.155em;"></span><span class="delimsizinginner delim-size4"><span>⎛</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="color:red;">x</span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;color:green;">y</span></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;color:blue;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-2.25em;"><span class="pstrut" style="height:3.155em;"></span><span class="delimsizinginner delim-size4"><span>⎠</span></span></span><span style="top:-3.397em;"><span class="pstrut" style="height:3.155em;"></span><span style="height:0.016em;width:0.875em;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPScwLjg3NWVtJyBoZWlnaHQ9JzAuMDE2ZW0nIHN0eWxlPSd3aWR0aDowLjg3NWVtJyB2aWV3Qm94PScwIDAgODc1IDE2JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSd4TWluWU1pbic+PHBhdGggZD0nTTQ1NyAwIEg1ODMgVjE2IEg0NTd6IE00NTcgMCBINTgzIFYxNiBINDU3eicvPjwvc3ZnPg=="/></span></span><span style="top:-4.05em;"><span class="pstrut" style="height:3.155em;"></span><span class="delimsizinginner delim-size4"><span>⎞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+</script>
+</p>
 <p><a href="https://katex.org/docs/supported.html">https://katex.org/docs/supported.html</a><br />
 <a href="https://katex.org/docs/support_table.html">https://katex.org/docs/support_table.html</a></p>
 <h1 id="markdown_10">Markdown 方框<a class="headerlink" href="#markdown_10" title="Permanent link">#</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>绿色</strong>方框是一些注释或者是对于OpenGL或讨论主题有用的特性/提示。</p>
+<div class="admonition summary">
+<p class="admonition-title">summary</p>
+<p>"!!! summary "summary""</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">example</p>
+<p>"!!! example "example""</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">quote</p>
+<p>"!!! quote "quote""</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">tip</p>
+<p>"!!! tip "tip""</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">info</p>
+<p>"!!! info "info""</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">success</p>
+<p>"!!! success "success""</p>
+</div>
+<div class="admonition help">
+<p class="admonition-title">help</p>
+<p>"!!! help "help""</p>
 </div>
 <div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p><strong>红色</strong>方框是一些警告或者一些你需要特别注意的特性。</p>
+<p class="admonition-title">attention</p>
+<p>"!!! attention "attention""</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p><strong>蓝色</strong>方框是翻译时为了帮助读者理解附加的一些信息。</p>
+<div class="admonition warning">
+<p class="admonition-title">warning</p>
+<p>"!!! warning "warning""</p>
+</div>
+<div class="admonition fail">
+<p class="admonition-title">fail</p>
+<p>"!!! fail "fail""</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">danger</p>
+<p>"!!! danger "danger""</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">error</p>
+<p>"!!! error "error""</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">bug</p>
+<p>"!!! bug "bug""</p>
 </div></div>
             </div>
         </div>
@@ -391,6 +428,7 @@ f(x) = \int_{-\infty}^\infty
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
         <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
