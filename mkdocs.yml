@@ -1,13 +1,15 @@
 nav:
-    - Home: index.md
-    - markdown: markdown.md
+    - 首页: index.md
     - OpenGL:
+        - 渲染管线: OpenGL/Pipeline.md
         - VAO、VBO、EBO: OpenGL/VAO_VBO_EBO.md
         - 光照: OpenGL/光照.md
+        - 法线贴图: OpenGL/法线贴图.md
         - 材质: OpenGL/材质.md
         - 光源: OpenGL/光源.md
-    - UE4:
-        - test: UE4/test.md
+        - 几何着色器: OpenGL/几何着色器.md
+        - 高级GLSL: OpenGL/高级GLSL.md
+    - markdown语法: markdown.md
 
 site_name: 梦之斋
 site_description: '梦之斋'
