@@ -83,6 +83,32 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">部署iOS打包环境</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">小记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="dropdown-item">AppleWWDRCA证书</a>
+</li>
+                                    
+<li>
+    <a href="../../Note/Mac%E5%AE%89%E8%A3%85Homebrew/" class="dropdown-item">Mac安装Homebrew</a>
+</li>
+                                    
+<li>
+    <a href="../../Note/Mac%E5%8D%B8%E8%BD%BDJDK/" class="dropdown-item">Mac卸载JDK</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="navitem">
                                 <a href="../../markdown/" class="nav-link">markdown语法</a>
                             </li>
@@ -94,6 +120,16 @@
                                 <i class="fa fa-search"></i> 搜索
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
@@ -134,30 +170,30 @@
 Unreal Engine 4.26</p>
 <h3 id="1remotetoolchainprivate">1、RemoteToolChainPrivate<a class="headerlink" href="#1remotetoolchainprivate" title="Permanent link">#</a></h3>
 <div class="admonition fail">
-<p class="admonition-title">fail</p>
+<p class="admonition-title">报错</p>
 <p>[Remote] Using private key at D:\RemoteToolChainPrivate.key
     ERROR: Unable to determine home directory for remote user. SSH output:</p>
 </div>
 <div class="admonition help">
-<p class="admonition-title">help</p>
+<p class="admonition-title">解决方案</p>
 <p>需在打包机（Windows系统）上生成  RemoteToolChainPrivate.key  文件</p>
 </div>
 <h3 id="2-werror">2、-Werror<a class="headerlink" href="#2-werror" title="Permanent link">#</a></h3>
 <div class="admonition fail">
-<p class="admonition-title">fail</p>
+<p class="admonition-title">报错</p>
 <p>error: variable 'xx' set but not used [-Werror,-Wunused-but-set-variable]</p>
 </div>
 <div class="admonition help">
-<p class="admonition-title">help</p>
+<p class="admonition-title">解决方案</p>
 <p>XCode版本问题，可以使用 Xcode 13.2.1 版本</p>
 </div>
 <h3 id="3the-legacy-build-system">3、The Legacy Build System<a class="headerlink" href="#3the-legacy-build-system" title="Permanent link">#</a></h3>
 <div class="admonition fail">
-<p class="admonition-title">fail</p>
+<p class="admonition-title">报错</p>
 <p>error: The Legacy Build System will be removed in a future release. You can configure the selected build system and this deprecation message in File &gt; Workspace Settings.</p>
 </div>
 <div class="admonition help">
-<p class="admonition-title">help</p>
+<p class="admonition-title">解决方案</p>
 <p>Unreal Engine 版本问题，可以使用 4.27</p>
 </div>
 <h2 id="mac">Mac打包<a class="headerlink" href="#mac" title="Permanent link">#</a></h2>
@@ -165,11 +201,11 @@ Unreal Engine 4.26</p>
 Jenkins 2.332.2 LTS</p>
 <p>Jenkins中配置 svn 账号验证不通过，后台报错</p>
 <div class="admonition fail">
-<p class="admonition-title">fail</p>
+<p class="admonition-title">报错</p>
 <p>SEVERE  h.s.SubversionSCM$ModuleLocation$DescriptorImpl#checkCredentialsId: svn: E175002: SSL handshake failed: 'The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]</p>
 </div>
 <div class="admonition help">
-<p class="admonition-title">help</p>
+<p class="admonition-title">解决方案</p>
 <p>在文件 /Library/Java/JavaVirtualMachines/jdk-11.0.15.jdk/Contents/Home/conf/security/java.security 中找到 jdk.tls.disabledAlgorithms，删除其中的 TLSv1、TLSv1.1、3DES_EDE_CBC 后重启系统。
 java.security文件没有权限修改，可以将其复制到有权限修改的目录，改完之后再覆盖该文件。</p>
 </div></div>
