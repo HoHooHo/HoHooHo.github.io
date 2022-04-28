@@ -11,6 +11,7 @@ nav:
         - 高级GLSL: OpenGL/高级GLSL.md
     - UE4:
         - 部署iOS打包环境: UE4/部署iOS打包环境.md
+        - 生成xcode工程文件: UE4/生成xcode工程文件.md
     - 小记:
         - AppleWWDRCA证书: Note/AppleWWDRCA证书.md
         - Mac安装Homebrew: Note/Mac安装Homebrew.md
