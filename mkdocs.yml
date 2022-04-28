@@ -9,6 +9,12 @@ nav:
         - 光源: OpenGL/光源.md
         - 几何着色器: OpenGL/几何着色器.md
         - 高级GLSL: OpenGL/高级GLSL.md
+    - UE4:
+        - 部署iOS打包环境: UE4/部署iOS打包环境.md
+    - 小记:
+        - AppleWWDRCA证书: Note/AppleWWDRCA证书.md
+        - Mac安装Homebrew: Note/Mac安装Homebrew.md
+        - Mac卸载JDK: Note/Mac卸载JDK.md
     - markdown语法: markdown.md
 
 site_name: 梦之斋
