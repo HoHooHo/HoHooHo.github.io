@@ -30,6 +30,17 @@ pip install markdown_katex
 pip install python-markdown-math
 ```
 
+## 启动
+
+cmd 执行命令
+
+```
+mkdocs new 
+mkdocs serve
+mkdocs gh-deploy
+```
+
+
 # 部署到 Github
 
 
