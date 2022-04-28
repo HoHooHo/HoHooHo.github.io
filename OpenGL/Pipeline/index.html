@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
         <link rel="canonical" href="https://hohooho.github.io/OpenGL/Pipeline/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>Pipeline - 梦之斋</title>
+        <title>渲染管线 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -44,14 +44,15 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../.." class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">首页</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../../markdown/" class="nav-link">markdown</a>
-                            </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">渲染管线</a>
+</li>
                                     
 <li>
     <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
@@ -62,31 +63,47 @@
 </li>
                                     
 <li>
+    <a href="../%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
     <a href="../%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
 </li>
                                     
 <li>
     <a href="../%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
 </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UE4/test/" class="dropdown-item">test</a>
+    <a href="../%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="../%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
 </li>
                                 </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../markdown/" class="nav-link">markdown语法</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> 搜索
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../VAO_VBO_EBO/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
@@ -135,8 +152,11 @@
 
 <h1 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">#</a></h1>
 <h2 id="opengl-es-32-pipeline">OpenGL ES 3.2 pipeline<a class="headerlink" href="#opengl-es-32-pipeline" title="Permanent link">#</a></h2>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">渲染管线各阶段的工作内容 图中的图元装配实际上是 <color_y>早期图元装配</color_y> </p>
 <p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/pipeline.png" /></p>
+</div>
+<blockquote>
 <p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/RenderingPipeline.png" /></p>
 </blockquote>
 <p><img alt="OpenGL ES 3.2 pipeline.png" src="../assets/pipeline1.png" /></p>
@@ -152,9 +172,9 @@ in For parameter passed into a function
 out For values passed out of a function
 inout Function parameters passed in and out</p>
 <h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<p><a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview">https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview</a>
-<a href="../assets/opengl45-quick-reference-card.pdf">OpenGL 4.5 Reference Guide</a>
-<a href="../assets/opengles32-quick-reference-card.pdf">OpenGL ES 3.2 Reference Guide</a></p></div>
+<p><a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview">Rendering_Pipeline_Overview</a><br />
+<a href="../assets/opengl45-quick-reference-card.pdf">OpenGL 4.5 Reference Guide</a><br />
+<a href="../assets/opengles32-quick-reference-card.pdf">OpenGL ES 3.2 Reference Guide</a>  </p></div>
             </div>
         </div>
 
@@ -174,14 +194,14 @@ inout Function parameters passed in and out</p>
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
@@ -208,19 +228,19 @@ inout Function parameters passed in and out</p>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>帮助</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>下一页</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>上一页</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>搜索</td>
                   </tr>
                 </tbody>
               </table>

@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/OpenGL/VAO_VBO_EBO/">
+        <link rel="canonical" href="https://hohooho.github.io/OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>VAO、VBO、EBO - 梦之斋</title>
+        <title>法线贴图 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">VAO、VBO、EBO</a>
+    <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
 </li>
                                     
 <li>
@@ -63,7 +63,7 @@
 </li>
                                     
 <li>
-    <a href="../%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+    <a href="./" class="dropdown-item active">法线贴图</a>
 </li>
                                     
 <li>
@@ -95,12 +95,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Pipeline/" class="nav-link">
+                                <a rel="prev" href="../%E5%85%89%E7%85%A7/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> 上一页
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../%E5%85%89%E7%85%A7/" class="nav-link">
+                                <a rel="next" href="../%E6%9D%90%E8%B4%A8/" class="nav-link">
                                     下一页 <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -125,22 +125,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vbo" class="nav-link">VBO</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">法线贴图</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#ebo" class="nav-link">EBO</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#vao" class="nav-link">VAO</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">总结</a>
+            <li class="nav-item" data-level="1"><a href="#tangent-space" class="nav-link">切线空间（tangent space）</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -149,91 +139,55 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vbo">VBO<a class="headerlink" href="#vbo" title="Permanent link">#</a></h2>
-<p>顶点缓冲对象(Vertex Buffer Object、VBO)：用于存储顶点的各类属性信息（如顶点坐标、顶点法向量、顶点颜色等）。在渲染时，可以直接从VBO中读取顶点的各类属性数据，由于VBO在显存中而不是在内存中，处理效率更高。每个VBO在OpenGL中有唯一标识ID，通过这个ID可以对特定的VBO内的数据进行存取操作。</p>
-<h2 id="ebo">EBO<a class="headerlink" href="#ebo" title="Permanent link">#</a></h2>
-<p>索引缓冲对象(Element Buffer Object，EBO或Index Buffer Object，IBO)：当需要使用重复的顶点时，可以通过EBO节省内存，提高执行效率。EBO中存储的内容就是顶点位置的索引，EBO跟VBO类似，只不过EBO保存的是顶点的索引。</p>
-<h2 id="vao">VAO<a class="headerlink" href="#vao" title="Permanent link">#</a></h2>
-<p>顶点数组对象(Vertex Array Object、VAO)：可以像VBO那样被绑定，任何随后的顶点属性设置都会储存在这个VAO中，之后在绘制物体的时候只需要绑定相应的VAO就可以。在不同顶点数据和属性配置之间切换时，只需绑定不同的VAO就可以。</p>
-<p>一个VAO会储存以下这些内容：</p>
-<ul>
-<li>glEnableVertexAttribArray和glDisableVertexAttribArray的调用；</li>
-<li>通过glVertexAttribPointer设置的顶点属性配置；</li>
-<li>通过glVertexAttribPointer调用与顶点属性关联的VBO；</li>
-<li>当目标是GL_ELEMENT_ARRAY_BUFFER的时候，VAO会储存glBindBuffer的函数调用； <ul>
-<li>这意味着它也会储存解绑调用，所以确保在解绑VAO之前没有解绑EBO，否则它就没有这个EBO配置了。</li>
-</ul>
-</li>
-</ul>
-<h2 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<ul>
-<li>VBO<ul>
-<li>存储顶点数据</li>
-</ul>
-</li>
-<li>EBO<ul>
-<li>存储顶点索引</li>
-</ul>
-</li>
-<li>VAO<ul>
-<li>存储缓冲区和顶点属性状态</li>
-</ul>
-</li>
-</ul>
+<h1 id="_1">法线贴图<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>当光照射到物体表面时，我们是通过表面的法线向量来计算光照的。现实中的物体表面并非是平坦的，而是表现出无数（凹凸不平的）细节。如何表现出这些细节呢？让每个 Fragment 使用自己的法线，就可以让光照相信一个表面是由很多微小的（垂直于法线向量的）平面所组成的，物体表面的细节将会得到极大提升。这种每个fragment使用各自的法线，替代一个面上所有fragment使用同一个法线的技术叫做法线贴图（normal mapping）或凹凸贴图（bump mapping）。</p>
 <div class="admonition back">
 <p class="admonition-title">Back</p>
-<p><img alt="vertex_array_objects_ebo.png" src="../assets/vertex_array_objects_ebo.png" /></p>
+<p><img alt="normal_mapping_surfaces" src="../assets/normal_mapping_surfaces.png" /></p>
 </div>
-<pre><code class="language-c">// set up vertex data (and buffer(s)) and configure vertex attributes
-float vertices[] = {
-     0.5f,  0.5f, 0.0f,  // top right
-     0.5f, -0.5f, 0.0f,  // bottom right
-    -0.5f, -0.5f, 0.0f,  // bottom left
-    -0.5f,  0.5f, 0.0f   // top left 
-};
-unsigned int indices[] = {  // note that we start from 0!
-    0, 1, 3,  // first Triangle
-    1, 2, 3   // second Triangle
-};
+<p>为使法线贴图工作，需要为每个fragment提供一个法线。像diffuse贴图和specular贴图一样，我们可以使用一个2D纹理来储存法线数据。2D纹理不仅可以储存颜色和光照数据，还可以储存法线向量。这样就可以从2D纹理中采样得到特定纹理的法线向量。</p>
+<div class="admonition info">
+<p class="admonition-title">法线贴图</p>
+<p>将法线向量的x、y、z元素储存到纹理中，代替颜色的r、g、b元素。
+法线向量的范围在-1到1之间，先要将其映射到0到1的范围：</p>
+<pre><code>vec3 rgb_normal = normal * 0.5 + 0.5; // 从 [-1,1] 转换至 [0,1]
+</code></pre>
+</div>
+<p>将法线向量变换为RGB颜色元素，就能把根据表面的形状的fragment的法线保存在2D纹理中。如：
+<img alt="normal_mapping_surfaces" src="../assets/normal_mapping_normal_map.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">注意</p>
+<p>法线贴图是一种偏蓝色调的纹理。这是因为所有法线的指向都偏向z轴（0, 0, 1）这是一种偏蓝的颜色。法线向量从z轴方向也向其他方向轻微偏移，颜色也就发生了轻微变化，这样看起来便有了一种深度。例如，上图中可以看到在每个砖块的顶部，颜色倾向于偏绿，这是因为砖块的顶部的法线偏向于指向正y轴方向（0, 1, 0），这样它就是绿色的了。</p>
+</div>
+<pre><code class="language-c">uniform sampler2D normalMap;  
 
-unsigned int VBO, VAO, EBO;
-glGenVertexArrays(1, &amp;VAO);
-glGenBuffers(1, &amp;VBO);
-glGenBuffers(1, &amp;EBO);
+void main()
+{           
+    // 从法线贴图范围[0,1]获取法线
+    normal = texture(normalMap, fs_in.TexCoords).rgb;
+    // 将法线向量转换为范围[-1,1]
+    normal = normalize(normal * 2.0 - 1.0);   
 
-// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-glBindVertexArray(VAO);
-
-glBindBuffer(GL_ARRAY_BUFFER, VBO);
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-glEnableVertexAttribArray(0);
-
-// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-glBindBuffer(GL_ARRAY_BUFFER, 0); 
-
-// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-glBindVertexArray(0); 
-
-// ... 省略部分代码
-
-// render loop
-// -----------
-glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-//glDrawArrays(GL_TRIANGLES, 0, 6);
-glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-// glBindVertexArray(0); // no need to unbind it every time 
-
-glSwapBuffers();
-</code></pre></div>
+    [...]
+    // 像往常那样处理光照
+}
+</code></pre>
+<h1 id="tangent-space">切线空间（tangent space）<a class="headerlink" href="#tangent-space" title="Permanent link">#</a></h1>
+<p>法线贴图中的所有法线向量都是指向正z方向的。当物体表面的法线指向正y方向时怎么办呢？</p>
+<div class="admonition info">
+<p class="admonition-title">切线空间</p>
+<p>在一个不同的坐标空间中进行光照，这个坐标空间里，法线贴图向量总是指向这个坐标空间的正z方向；所有的光照向量都相对与这个正z方向进行变换。这样就能使用同样的法线贴图，不管朝向问题。这个坐标空间叫做切线空间（tangent space）。</p>
+</div>
+<div class="admonition help">
+<p class="admonition-title">法线贴图</p>
+<p>法线贴图中的法线向量定义在切线空间中，在切线空间中，法线永远指着正z方向。它就像法线贴图向量的本地空间。使用一个特定的矩阵我们就能将切线空间中的法线向量转成世界或视图空间下，使它们转向到最终的贴图表面的方向。</p>
+</div>
+<div class="admonition help">
+<p class="admonition-title">TBN矩阵</p>
+<p>TBN矩阵这三个字母分别代表 切线(Tagent)、副切线(Bitangent)和法线(Normal) 向量。要建构这样一个把切线空间转变为不同空间的变异矩阵，需要三个相互垂直的向量，它们沿一个表面的法线贴图对齐于：上、右、前</p>
+<p><img alt="normal_mapping_tbn_vectors" src="../assets/normal_mapping_tbn_vectors.png" />  </p>
+<p><a href="https://learnopengl-cn.github.io/05%20Advanced%20Lighting/04%20Normal%20Mapping/#_3">TBN矩阵的计算参考</a></p>
+</div></div>
             </div>
         </div>
 

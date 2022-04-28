@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,14 +44,15 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../.." class="nav-link">Home</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../../markdown/" class="nav-link">markdown</a>
+                                <a href="../.." class="nav-link">首页</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Pipeline/" class="dropdown-item">渲染管线</a>
+</li>
                                     
 <li>
     <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
@@ -62,39 +63,45 @@
 </li>
                                     
 <li>
+    <a href="../%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
     <a href="../%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
 </li>
                                     
 <li>
     <a href="../%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
 </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UE4/test/" class="dropdown-item">test</a>
+    <a href="../%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="../%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
 </li>
                                 </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../markdown/" class="nav-link">markdown语法</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> 搜索
                             </a>
                         </li>
                             <li class="nav-item">
                                 <a rel="prev" href="../VAO_VBO_EBO/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
+                                    <i class="fa fa-arrow-left"></i> 上一页
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../%E6%9D%90%E8%B4%A8/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
+                                <a rel="next" href="../%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -133,6 +140,15 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#demo" class="nav-link">Demo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_2" class="nav-link">高级光照</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#blinn-phong" class="nav-link">Blinn-Phong着色模型</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -260,7 +276,44 @@
         vec3 result = (ambient + diffuse + specular) * objectColor;
         FragColor = vec4(result, 1.0);
     } 
-</code></pre></div>
+</code></pre>
+<h1 id="_2">高级光照<a class="headerlink" href="#_2" title="Permanent link">#</a></h1>
+<p>冯氏光照不仅对真实光照有很好的近似，而且性能也很高。但是它的镜面反射会在一些情况下出现问题，当观察向量和反射向量间的夹角大于90度时。点乘的结果为负数，镜面光分量会变为0.0。实际上在考虑镜面高光时，我们测量的角度并不是光源与法线的夹角，而是视线与反射光线向量的夹角。</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="advanced_lighting_over_90.png" src="../assets/advanced_lighting_over_90.png" /></p>
+</div>
+<h2 id="blinn-phong">Blinn-Phong着色模型<a class="headerlink" href="#blinn-phong" title="Permanent link">#</a></h2>
+<p>Blinn-Phong模型与冯氏模型非常相似，但是它对镜面光模型的处理上有一些不同，Blinn-Phong模型不再依赖于反射向量，而是采用了所谓的半程向量(Halfway Vector)，即光线与视线夹角一半方向上的一个单位向量，这样不管什么情况，半程向量与表面法线之间的夹角都不会超过90度（除非光源在表面以下）。当半程向量与法线向量越接近时，镜面光分量就越大。它产生的效果会与冯氏光照有些许不同，但是大部分情况下看起来会更自然一点，特别是低高光的区域。Blinn-Phong着色模型正是早期固定渲染管线时代时OpenGL所采用的光照模型。</p>
+<div class="admonition back">
+<p class="admonition-title">Back</p>
+<p><img alt="advanced_lighting_halfway_vector.png" src="../assets/advanced_lighting_halfway_vector.png" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">公式</p>
+<p>
+<script type="math/tex; mode=display">
+\bar{H} = \frac{\bar{L} + \bar{V}}{||\bar{L} + \bar{V}||}
+</script>
+</p>
+<pre><code>对应的GLSL代码
+
+vec3 lightDir   = normalize(lightPos - FragPos);
+vec3 viewDir    = normalize(viewPos - FragPos);
+vec3 halfwayDir = normalize(lightDir + viewDir);
+
+float spec = pow(max(dot(normal, halfwayDir), 0.0), shininess);
+vec3 specular = lightColor * spec;
+</code></pre>
+</div>
+<div class="admonition info">
+<p class="admonition-title">光照对比</p>
+<p><img alt="advanced_lighting_comparrison.png" src="../assets/advanced_lighting_comparrison.png" /></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">冯氏模型 与 Blinn-Phong模型 有一些细微的差别</p>
+<p>半程向量与表面法线的夹角通常会小于观察与反射向量的夹角。所以，如果要获得和冯氏着色类似的效果，就必须在使用Blinn-Phong模型时将镜面反光度设置更高一点。通常会选择冯氏着色时反光度分量的2到4倍。</p>
+</div></div>
             </div>
         </div>
 
@@ -280,14 +333,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
@@ -314,19 +367,19 @@
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>帮助</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>下一页</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>上一页</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>搜索</td>
                   </tr>
                 </tbody>
               </table>

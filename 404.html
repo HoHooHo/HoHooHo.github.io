@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,14 +44,15 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="/." class="nav-link">Home</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="/markdown/" class="nav-link">markdown</a>
+                                <a href="/." class="nav-link">首页</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/OpenGL/Pipeline/" class="dropdown-item">渲染管线</a>
+</li>
                                     
 <li>
     <a href="/OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
@@ -62,29 +63,35 @@
 </li>
                                     
 <li>
+    <a href="/OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
     <a href="/OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
 </li>
                                     
 <li>
     <a href="/OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
 </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
                                     
 <li>
-    <a href="/UE4/test/" class="dropdown-item">test</a>
+    <a href="/OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="/OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
 </li>
                                 </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="/markdown/" class="nav-link">markdown语法</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> 搜索
                             </a>
                         </li>
                             <li class="nav-item">
@@ -125,14 +132,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
@@ -159,19 +166,19 @@
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>帮助</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>下一页</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>上一页</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>搜索</td>
                   </tr>
                 </tbody>
               </table>
