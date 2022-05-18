@@ -16,6 +16,9 @@ nav:
         - AppleWWDRCA证书: Note/AppleWWDRCA证书.md
         - Mac安装Homebrew: Note/Mac安装Homebrew.md
         - Mac卸载JDK: Note/Mac卸载JDK.md
+    - 面试:
+        - C++基础: Interview/C++基础.md
+        - C++高级: Interview/C++高级.md
     - markdown语法: markdown.md
 
 site_name: 梦之斋
