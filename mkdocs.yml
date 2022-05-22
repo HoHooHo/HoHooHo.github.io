@@ -12,6 +12,7 @@ nav:
     - UE4:
         - 部署iOS打包环境: UE4/部署iOS打包环境.md
         - 生成xcode工程文件: UE4/生成xcode工程文件.md
+        - UE4的垃圾回收: UE4/UE4的垃圾回收.md
     - 小记:
         - AppleWWDRCA证书: Note/AppleWWDRCA证书.md
         - Mac安装Homebrew: Note/Mac安装Homebrew.md
