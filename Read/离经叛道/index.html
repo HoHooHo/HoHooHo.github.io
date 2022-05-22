@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/">
+        <link rel="canonical" href="https://hohooho.github.io/Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>几何着色器 - 梦之斋</title>
+        <title>离经叛道 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -46,40 +46,40 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../Pipeline/" class="dropdown-item">渲染管线</a>
+    <a href="../../OpenGL/Pipeline/" class="dropdown-item">渲染管线</a>
 </li>
                                     
 <li>
-    <a href="../VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+    <a href="../../OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
 </li>
                                     
 <li>
-    <a href="../%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+    <a href="../../OpenGL/%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
 </li>
                                     
 <li>
-    <a href="../%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+    <a href="../../OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
 </li>
                                     
 <li>
-    <a href="../%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+    <a href="../../OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
 </li>
                                     
 <li>
-    <a href="../%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
+    <a href="../../OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">几何着色器</a>
+    <a href="../../OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
 </li>
                                     
 <li>
-    <a href="../%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
+    <a href="../../OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
 </li>
                                 </ul>
                             </li>
@@ -126,12 +126,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">读后感 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/" class="dropdown-item">离经叛道</a>
+    <a href="./" class="dropdown-item active">离经叛道</a>
 </li>
                                 </ul>
                             </li>
@@ -147,12 +147,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../%E5%85%89%E6%BA%90/" class="nav-link">
+                                <a rel="prev" href="../../Interview/C%2B%2B%E9%AB%98%E7%BA%A7/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> 上一页
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../%E9%AB%98%E7%BA%A7GLSL/" class="nav-link">
+                                <a rel="next" href="../../markdown/" class="nav-link">
                                     下一页 <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -177,7 +177,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">几何着色器</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">离经叛道</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -186,65 +186,87 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">几何着色器<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h1 id="_1">离经叛道<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<hr />
+<ol>
+<li>第一章：<ul>
+<li>成功人士会在组合中平衡各项风险<ul>
+<li>当在一个领域铤而走险时，会在其他领域谨慎行事来降低整体风险水平</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>第二章：</p>
 <ul>
-<li>几何着色器(Geometry Shader)是可选的</li>
-<li>几何着色器的输入是一个图元（如点或三角形）的一组顶点。</li>
-<li>几何着色器可以对顶点随意变换<ul>
-<li>它能够将（这一组）顶点变换为完全不同的图元，并且还能生成比原来更多的顶点。</li>
+<li>过分自信在创新领域可能是一种特别难以克服的认知偏差<ul>
+<li>没有人会认为自己的想法不够好</li>
+</ul>
+</li>
+<li>创意天才在他们所在领域的作品并不比同行的作品质量更好，他们只是有大量的想法而已<ul>
+<li>一个人能想出有影响力的成功创意的概率同他想出的创意总数成正比</li>
+<li>想要得到一个好标题，你得至少先想出25个</li>
+</ul>
+</li>
+<li>经验是一把双刃剑<ul>
+<li>如果想进行创新性的联想，就要有与他人不一样的经历</li>
+<li>过去越成功的人，在新环境中表现越差。他们过于自信，而且不太可能听取别人的批评意见</li>
 </ul>
 </li>
 </ul>
-<p>如：</p>
-<pre><code class="language-c">#version 330 core
-layout (points) in;
-layout (line_strip, max_vertices = 2) out;
-
-void main() {    
-    gl_Position = gl_in[0].gl_Position + vec4(-0.1, 0.0, 0.0, 0.0); 
-    EmitVertex();
-
-    gl_Position = gl_in[0].gl_Position + vec4( 0.1, 0.0, 0.0, 0.0);
-    EmitVertex();
-
-    EndPrimitive();
-}
-</code></pre>
-<div class="admonition help">
-<p class="admonition-title">注</p>
+</li>
+<li>
+<p>第三章：</p>
 <ul>
-<li>每次调用 EmitVertex() 时，gl_Position 中的向量就会被添加到图元中</li>
-<li>当 调用 EndPrimitive() 时，所有发射出的(Emitted)顶点都会合成为指定的输出渲染图元</li>
-<li>在 N个 EmitVertex() 调用之后，重复调用 EndPrimitive() 能够生成多个图元</li>
-</ul>
-</div>
-<p>在几何着色器的顶部：</p>
-<ul>
-<li>需要声明从顶点着色器输入的图元类型<ul>
-<li>在 in 关键字前声明一个布局修饰符(Layout Qualifier)<ul>
-<li>括号内的数字表示的是一个图元所包含的最小顶点数。</li>
+<li>当人在缺乏尊重却试图对他人施加影响时，别人会认为此人难以相处、强硬、自私自利。在行使权力之前，应该先赢得地位<ul>
+<li>权利：涉及对他人施加控制和权威</li>
+<li>地位：受到他人的尊重和钦佩</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>还需要指定几何着色器输出的图元类型<ul>
-<li>在 out 关键字前面加一个布局修饰符(Layout Qualifier)<ul>
-<li>括号内的数字表示的是它最大能够输出的顶点数量（如果超过了这个值，OpenGL将不会绘制多出的顶点）</li>
+<li>第四章：<ul>
+<li>等待时机尤为重要<ul>
+<li>先发制人只是一种手段，而不是最终目的</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>第五章：<ul>
+<li>联盟是强大有力的，但它同时又有内在的不稳定性<ul>
+<li>目标一致是建立联盟的前提，而策略一致是联盟持久的标准</li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">布局修饰符</p>
-<ul>
-<li><code>points</code>：GL_POINTS</li>
-<li><code>lines</code>：GL_LINES 或 GL_LINE_STRIP</li>
-<li><code>lines_adjacency</code>：GL_LINES_ADJACENCY 或 GL_LINE_STRIP_ADJACENCY</li>
-<li><code>triangles</code>：GL_TRIANGLES、GL_TRIANGLE_STRIP 或 GL_TRIANGLE_FAN</li>
-<li><code>triangles_adjacency</code>：GL_TRIANGLES_ADJACENC Y 或GL_TRIANGLE_STRIP_ADJACENC</li>
+</li>
 </ul>
-</div></div>
+</li>
+<li>第六章：<ul>
+<li>称赞人格，而不是具体的行为<ul>
+<li>当人格受到称赞时，人们会内化他，使其作为自身的一部分，而不是认为自己只是参与了一个孤立的道德行为事件</li>
+<li>人格赞扬会留下最持久的印记</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第七章：<ul>
+<li>团体迷思：团体在决策过程中，由于成员倾向让自己的观点与团体一致，因而令整个团体缺乏不同的思考角度，不能进行客观分析。</li>
+<li>如何避免团体迷思<ul>
+<li>寻找异见者，进行彻底的讨论</li>
+<li>即便异见是错误的，他们也是有用的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第八章：<ul>
+<li>防御性悲观主义是在特定情况下用来管控焦虑、恐惧和担忧的一种战略。考虑每一个细节确保不会失败，将焦虑转化为动力</li>
+<li>面对恐惧时，不应该激活停止系统（冷静），而应该激活前进系统（兴奋），成功率会大大提高</li>
+<li>消除他人的恐惧的最好办法是通过某些信号告诉他们，他们并不孤单</li>
+<li>同一事件同一行为<ul>
+<li>描述这样做带来的好处和不这样做带来的坏处，人们的选择可能会截然相反</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></div>
             </div>
         </div>
 
