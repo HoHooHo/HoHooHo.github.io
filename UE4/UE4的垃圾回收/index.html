@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/Interview/C%2B%2B%E9%AB%98%E7%BA%A7/">
+        <link rel="canonical" href="https://hohooho.github.io/UE4/UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>C++高级 - 梦之斋</title>
+        <title>UE4的垃圾回收 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -83,20 +83,20 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../UE4/%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
+    <a href="../%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
 </li>
                                     
 <li>
-    <a href="../../UE4/%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="dropdown-item">生成xcode工程文件</a>
+    <a href="../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="dropdown-item">生成xcode工程文件</a>
 </li>
                                     
 <li>
-    <a href="../../UE4/UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="dropdown-item">UE4的垃圾回收</a>
+    <a href="./" class="dropdown-item active">UE4的垃圾回收</a>
 </li>
                                 </ul>
                             </li>
@@ -117,16 +117,16 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">面试 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../C%2B%2B%E5%9F%BA%E7%A1%80/" class="dropdown-item">C++基础</a>
+    <a href="../../Interview/C%2B%2B%E5%9F%BA%E7%A1%80/" class="dropdown-item">C++基础</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">C++高级</a>
+    <a href="../../Interview/C%2B%2B%E9%AB%98%E7%BA%A7/" class="dropdown-item">C++高级</a>
 </li>
                                 </ul>
                             </li>
@@ -151,12 +151,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../C%2B%2B%E5%9F%BA%E7%A1%80/" class="nav-link">
+                                <a rel="prev" href="../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> 上一页
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/" class="nav-link">
+                                <a rel="next" href="../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="nav-link">
                                     下一页 <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -181,17 +181,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#c" class="nav-link">C++文件编译四个阶段</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#c5" class="nav-link">C++内存区域的5个区域</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#externc" class="nav-link">extern“C”的作用</a>
+            <li class="nav-item" data-level="1"><a href="#ue4" class="nav-link">UE4的垃圾回收系统</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -200,66 +190,315 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="c">C++文件编译四个阶段<a class="headerlink" href="#c" title="Permanent link">#</a></h2>
+<h1 id="ue4">UE4的垃圾回收系统<a class="headerlink" href="#ue4" title="Permanent link">#</a></h1>
+<hr />
 <div class="admonition info">
+<p class="admonition-title">追踪式GC</p>
 <ol>
-<li>预处理：<ul>
-<li>根据文件中的预处理指令来处理代码文件</li>
-<li>预编译过程主要处理那些源代码中以#开始的预编译指令，主要处理规则如下：<ul>
-<li>将所有的#define删除，并且展开所有的宏定义</li>
-<li>处理所有条件编译指令，如#if，#ifdef等</li>
-<li>处理#include预编译指令，将被包含的文件插入到该预编译指令的位置。该过程递归进行，及被包含的文件可能还包含其他文件</li>
-<li>删除所有的注释//和 /**/</li>
-<li>添加行号和文件标识，如#2 “hello.c” 2,以便于编译时编译器产生调试用的行号信息及用于编译时产生编译错误或警告时能够显示行号信息</li>
-<li>保留所有的#pragma编译器指令，因为编译器须要使用它们；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>编译<ul>
-<li>把预处理完的文件进行一系列词法分析，语法分析，语义分析及优化后生成相应的汇编代码文件</li>
-</ul>
-</li>
-<li>汇编<ul>
-<li>汇编器把汇编代码转变成目标机器指令</li>
-</ul>
-</li>
-<li>链接<ul>
-<li>链接器将各个目标文件组装在一起，解决符号依赖、库依赖关系，并生成可执行文件。</li>
-</ul>
-</li>
+<li>标记阶段：从根结点集合开始递归的标记所有可达对象。</li>
+<li>清扫阶段：遍历所有对象，将没有标记为可达的对象回收，并清理标记位。</li>
 </ol>
 </div>
-<h2 id="c5">C++内存区域的5个区域<a class="headerlink" href="#c5" title="Permanent link">#</a></h2>
-<div class="admonition info">
-<ol>
-<li>栈<ul>
-<li>编译器自动分配释放，主要存放函数的参数值，局部变量值等</li>
+<div class="admonition tip">
+<p class="admonition-title">注意</p>
+<ul>
+<li>UObject类型的变量，即使是static，默认也会被GC掉。</li>
+<li>防止UObject对象被GC掉，就要保持对其引用</li>
 </ul>
-</li>
-<li>堆<ul>
-<li>由程序员分配释放</li>
-</ul>
-</li>
-<li>全局/静态区<ul>
-<li>存放全局变量和静态变量；程序结束时由系统释放</li>
-</ul>
-</li>
-<li>常量区<ul>
-<li>这是一块比较特殊的存储区，里面存放的是常量，不允许修改</li>
-</ul>
-</li>
-<li>程序代码区<ul>
-<li>存放函数体的二进制代码</li>
-</ul>
-</li>
-</ol>
 </div>
-<h2 id="externc">extern“C”的作用<a class="headerlink" href="#externc" title="Permanent link">#</a></h2>
+<p><img alt="ue4-gc" src="/assets/ue4-gc.png" /></p>
+<h3 id="1uproperty">1、UPROPERTY<a class="headerlink" href="#1uproperty" title="Permanent link">#</a></h3>
+<pre><code class="language-c++">    UPROPERTY()
+    class UPaperTileMap* AssetToRename;
+
+    UPROPERTY()
+    TMap&lt;UCompositingElementInput*, ECompPassConstructionType&gt;
+    UserConstructedInputs;
+</code></pre>
+<h3 id="2addtoroot">2、AddToRoot<a class="headerlink" href="#2addtoroot" title="Permanent link">#</a></h3>
+<pre><code class="language-c++">    m_sInstance = NewObject&lt;T&gt;();
+    m_sInstance-&gt;AddToRoot();
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">注意</p>
+<p>释放的时候需要调用 m_sInstance-&gt;RemoveFromRoot();</p>
+</div>
+<h3 id="3tweakobjectptr">3、TWeakObjectPtr<a class="headerlink" href="#3tweakobjectptr" title="Permanent link">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">注意</p>
+<p>弱引用，不影响变量的 GC</p>
+</div>
+<h3 id="4tsharedptr">4、TSharedPtr<a class="headerlink" href="#4tsharedptr" title="Permanent link">#</a></h3>
 <div class="admonition info">
-<p>extern “C” 告诉 C++ 编译器用 C规则 编译指定的代码</p>
-<p>C++需要支持重载，单纯的函数名无法区分出具体的函数，所以在编译阶段就需要将形参列表作为附加项增加到函数符号中</p>
-</div></div>
+<p class="admonition-title">共享指针</p>
+<ul>
+<li>共享指针，类似C++标准库的共享智能指针，用于自定义的结构体。</li>
+<li>TSharedPtr<FTest> Test = MakeShareable(new FTest());</li>
+<li>不能用于UObject对象(TWeakPtr倒是可以用于UObject), 因为UObject有一套专用的GC规则。</li>
+</ul>
+</div>
+<pre><code class="language-c++">class MYPROJECT2_API FTest
+{
+public:
+    FTest();
+    ~FTest();
+};
+
+#include &quot;FTest.h&quot;
+
+FTest::FTest()
+{
+    UE_LOG(LogTemp, Warning, TEXT(&quot;1111FTest Constrction&quot;));
+}
+
+FTest::~FTest()
+{
+    UE_LOG(LogTemp, Warning, TEXT(&quot;2222FTest Deconstrction&quot;));
+}
+
+UCLASS()
+class MYPROJECT2_API ATestActor : public AActor
+{
+    GENERATED_BODY()
+    
+public:    
+    // Sets default values for this actor's properties
+    ATestActor();
+
+
+    TSharedPtr&lt;FTest&gt; Test;
+protected:
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
+
+}
+
+// Called when the game starts or when spawned
+void ATestActor::BeginPlay()
+{
+    Super::BeginPlay();
+
+    Test = MakeShareable(new FTest());
+    
+}
+</code></pre>
+<h3 id="5fgcobject">5、FGCObject<a class="headerlink" href="#5fgcobject" title="Permanent link">#</a></h3>
+<div class="admonition help">
+<p class="admonition-title">如何混用</p>
+<ul>
+<li>已知 UObject 类通过 NewObject 创建并自动 GC</li>
+<li>非 UObject 类通过 MakeShareable 来创建 TSharedPtr 来自动 GC</li>
+<li>而 非 UObject 类中出现 UObject 变量怎么办呢？</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">FGCObject</p>
+<p>UE4 提供了 FGCObject，非 UObject 类可以继承 FGCObject，然后通过 AddReferencedObjects 函数对 UObject 对象添加引用。</p>
+</div>
+<pre><code class="language-c++">#include &quot;GCObject.h&quot;
+
+class UCameraAnim;
+/**
+ * 
+ */
+class MYPROJECT2_API FTest :public FGCObject
+{
+public:
+    FTest();
+    ~FTest();
+
+    UCameraAnim* CameraAnim;
+
+protected:
+    virtual void AddReferencedObjects(FReferenceCollector&amp; Collector) override
+    {
+        Collector.AddReferencedObject(CameraAnim);
+    }
+};
+</code></pre>
+<h3 id="6tsharedref">6、TSharedRef<a class="headerlink" href="#6tsharedref" title="Permanent link">#</a></h3>
+<div class="admonition info">
+<p class="admonition-title">共享引用</p>
+<p>本质上共享引用(TSharedRef)和共享指针(TSharedPtr)是差不多的，一样是用于非UObject体系的对象，不过 TSharedRef 和 TSharedPtr 的不同在于共享引用无法引用空对象，编译直接报错。TSharedRef连 “IsValid” 判断是否非空都没有，强逼你使用必定是有效的引用。所以在 UE4 的 SWidget 中大量使用 TSharedRef<SWidget>。</p>
+</div>
+<pre><code class="language-c++">//正确的声明定义
+TSharedRef&lt;FMyCustom&gt; MyCustom = MakeShared&lt;FMyCustom&gt;();
+
+//错误的声明定义
+//TSharedRef没有空引用，应该持有的对象必须是有效的
+//TSharedRef&lt;FMyCustom&gt; MyCustom;
+//TSharedRef&lt;FMyCustom&gt; MyCustom = nullptr;
+
+//TSharedPtr转为TSharedRef
+TSharedPtr&lt;FMyCustom&gt; MySharedPtr = MakeShareable(new FMyCustom);
+TSharedRef&lt;FMyCustom&gt; MySharedRef = MySharedPtr.ToSharedRef();
+</code></pre>
+<pre><code class="language-c++">// TSharedRef可以转化为TSharedPtr， 直接等于就可以了
+TSharedRef&lt;FMyCustom&gt; RefCustom = MakeShared&lt;FMyCustom&gt;();
+TSharedPtr&lt;FMyCustom&gt; PtrCustom = RefCustom;
+</code></pre>
+<h4 id="tsharedfromthis">TSharedFromThis<a class="headerlink" href="#tsharedfromthis" title="Permanent link">#</a></h4>
+<div class="admonition info">
+<p class="admonition-title">TSharedFromThis</p>
+<p>一个普通的结构体继承 TSharedFromThis，就可以拥有 AsShared 函数让普通的结构体对象转为 TSharedRef, 像 SWidget 这个类本身就使用了 TSharedFromThis。</p>
+</div>
+<pre><code class="language-c++">FMyCustom MyCustom;
+TSharedRef&lt;FMyCustom&gt; FMyCustomRef = MyCustom.AsShared();
+</code></pre>
+<h3 id="7tweakptr">7、TWeakPtr<a class="headerlink" href="#7tweakptr" title="Permanent link">#</a></h3>
+<div class="admonition info">
+<p class="admonition-title">TWeakPtr</p>
+<ul>
+<li>上面说到了 TWeakObjectPtr，专门用于UObject, 相应的普通结构体也有弱指针 TWeakPtr, 能够访问一个非UObject对象，但又不影响 GC。</li>
+<li>一般来说通过 TWeakPtr 来访问其持有的对象，先是用 Pin() 转换为 TSharedPtr 指针，判断对象是否有效后，再访问</li>
+</ul>
+</div>
+<pre><code class="language-c++">struct FMyCustom
+{
+    int a = 1;
+
+    FMyCustom()
+    {
+        UE_LOG(LogTemp, Error, TEXT(&quot;destruct a = %d&quot;), a);
+    }
+
+    ~FMyCustom()
+    {
+        UE_LOG(LogTemp, Error, TEXT(&quot;undestruct a = %d&quot;), a);
+    }
+};
+
+
+UCLASS()
+class MYPROJECT5_API AMyActor : public AActor
+{
+public:
+
+    TWeakPtr&lt;FMyCustom&gt; WeakCustom;
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
+}
+
+void AMyActor::BeginPlay()
+{
+    Super::BeginPlay();
+
+    TSharedPtr&lt;FMyCustom&gt; ShareCustom = MakeShareable(new FMyCustom);
+
+    WeakCustom = ShareCustom;
+
+}
+
+// Called every frame
+void AMyActor::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+
+    TSharedPtr&lt;FMyCustom&gt; ShareCustom = WeakCustom.Pin();
+    if (ShareCustom.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT(&quot;a = %d&quot;), ShareCustom-&gt;a);
+    }
+
+}
+</code></pre>
+<div class="admonition info">
+<p class="admonition-title">TSharedPtr，TSharedRef, TWeakPtr在容器使用事项</p>
+<p>弱指针(TWeakPtr)对象不能作为 Set或者Map 的 Key，因为一个对象被 GC 掉无法通知一个容器的 Key，当然 TWeakPtr 可以作为容器的 Value。</p>
+<p>而 TSharedPtr和TSharedRef 既可以当作容器的 Key，也可以作为容器的 Value.</p>
+</div>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
+<pre><code class="language-c++">/**
+ * UMyGCObject
+ */
+UCLASS()
+class UMyGCObject : public UObject
+{
+    GENERATED_BODY()
+
+};
+
+
+/**
+ * UTestGCObject
+ */
+UCLASS()
+class UTestGCObject : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY()
+    UMyGCObject* Obj;
+};
+
+
+/**
+ * FTestGCStruct
+ */
+struct FTestGCStruct
+{
+public:
+    UPROPERTY()
+    UMyGCObject* Obj;
+};
+
+
+/**
+ * FTestGCUStruct
+ */
+USTRUCT()
+struct FTestGCUStruct
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY()
+    UMyGCObject* Obj;
+};
+
+/**
+ * ATestGCActor
+ */
+UCLASS()
+class ATestGCActor : public AActor
+{
+    GENERATED_BODY()
+
+public: 
+    //UTestGCObject
+    UTestGCObject* TestGCObj;  //追踪不可达，当GC时会被回收
+    UPROPERTY()
+    UTestGCObject* TestGCObj_UPROPERTY;  //使用 UPROPERTY 修饰，追踪可达，当GC时不会被回收
+
+
+    //FTestGCStruct
+    //FTestGCStruct 没有用 USTRUCT() 修饰，所以任何形式的变量都不能使用 UPROPERTY()修饰
+    //所以以下几种变量均 追踪不可达，当GC时其变量 UMyGCObject* Obj 会被回收
+    FTestGCStruct TestGCStruct;
+    FTestGCStruct* TestGCStructP;
+    TSharedPtr&lt;FTestGCStruct&gt; TestGCStructPtr;
+    TArray&lt;FTestGCStruct&gt; TestGCStructArray;
+    TArray&lt;TSharedPtr&lt;FTestGCStruct&gt;&gt; TestGCStructPtrArray;
+
+
+    //FTestGCStruct 使用了 USTRUCT() 修饰
+    //只有以下 2 种形式的变量，才可以使用 UPROPERTY()修饰
+    //当使用 UPROPERTY() 修饰时，追踪可达，当GC时其变量 UMyGCObject* Obj 不会被回收
+    UPROPERTY()
+    FTestGCUStruct TestGCUStruct_UPROPERTY;
+    UPROPERTY()
+    TArray&lt;FTestGCUStruct&gt; TestGCUStructArray_UPROPERTY;
+
+    //以下几种变量 追踪不可达，当GC时其变量 UMyGCObject* Obj 会被回收
+    FTestGCUStruct TestGCUStruct;
+    FTestGCUStruct* TestGCUStructP;
+    TSharedPtr&lt;FTestGCUStruct&gt; TestGCUStructPtr;
+    TArray&lt;FTestGCUStruct&gt; TestGCUStructArray;
+    TArray&lt;TSharedPtr&lt;FTestGCUStruct&gt;&gt; TestGCUStructPtrArray;
+};
+</code></pre></div>
             </div>
         </div>
 
