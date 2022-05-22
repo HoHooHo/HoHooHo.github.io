@@ -9,7 +9,7 @@
 	- UObject类型的变量，即使是static，默认也会被GC掉。
 	- 防止UObject对象被GC掉，就要保持对其引用
 
-![ue4-gc](/assets/ue4-gc.png)
+![ue4-gc](./assets/ue4-gc.png)
 
 
 ### 1、UPROPERTY
