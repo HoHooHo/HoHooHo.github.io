@@ -19,6 +19,8 @@ nav:
     - 面试:
         - C++基础: Interview/C++基础.md
         - C++高级: Interview/C++高级.md
+    - 读后感:
+        - 离经叛道: Read/离经叛道.md
     - markdown语法: markdown.md
 
 site_name: 梦之斋
