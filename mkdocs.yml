@@ -14,6 +14,7 @@ nav:
         - 创建组件: UE4/创建组件.md
         - Server-Client架构: UE4/Server-Client架构.md
         - UE4的垃圾回收: UE4/UE4的垃圾回收.md
+        - 自动编译新创建的C++类: UE4/自动编译新创建的C++类.md
         - 部署iOS打包环境: UE4/部署iOS打包环境.md
         - 生成xcode工程文件: UE4/生成xcode工程文件.md
     - 小记:
