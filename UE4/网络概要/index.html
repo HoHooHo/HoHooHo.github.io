@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/UE4/Server-Client%E6%9E%B6%E6%9E%84/">
+        <link rel="canonical" href="https://hohooho.github.io/UE4/%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>Server-Client架构 - 梦之斋</title>
+        <title>网络概要 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -96,7 +96,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Server-Client架构</a>
+    <a href="./" class="dropdown-item active">网络概要</a>
 </li>
                                     
 <li>
@@ -262,37 +262,36 @@
 <p class="admonition-title">GetLifetimeReplicatedProps</p>
 <p>需重写函数 <code>GetLifetimeReplicatedProps</code>
 并使用<code>DOREPLIFETIME</code>、<code>DOREPLIFETIME_CONDITION</code>等 注册需要同步的属性</p>
-<p>```c++
-void ARORCharacter::GetLifetimeReplicatedProps(TArray&lt; FLifetimeProperty &gt;&amp; OutLifetimeProps) const
-{
-    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</p>
-<pre><code>DOREPLIFETIME(ARORCharacter, IsInCombat);
-DOREPLIFETIME_CONDITION(ARORCharacter, RowName, COND_InitialOnly);
-DOREPLIFETIME_CONDITION_NOTIFY(ARORCharacter, OnDieInfo, COND_None, REPNOTIFY_Always);
-</code></pre>
-<p>}
-```</p>
-<p><code>c++
-enum ELifetimeCondition
-{
-    COND_None = 0                           UMETA(DisplayName = "None"),                            // This property has no condition, and will send anytime it changes
-    COND_InitialOnly = 1                    UMETA(DisplayName = "Initial Only"),                    // This property will only attempt to send on the initial bunch
-    COND_OwnerOnly = 2                      UMETA(DisplayName = "Owner Only"),                      // This property will only send to the actor's owner
-    COND_SkipOwner = 3                      UMETA(DisplayName = "Skip Owner"),                      // This property send to every connection EXCEPT the owner
-    COND_SimulatedOnly = 4                  UMETA(DisplayName = "Simulated Only"),                  // This property will only send to simulated actors
-    COND_AutonomousOnly = 5                 UMETA(DisplayName = "Autonomous Only"),                 // This property will only send to autonomous actors
-    COND_SimulatedOrPhysics = 6             UMETA(DisplayName = "Simulated Or Physics"),            // This property will send to simulated OR bRepPhysics actors
-    COND_InitialOrOwner = 7                 UMETA(DisplayName = "Initial Or Owner"),                // This property will send on the initial packet, or to the actors owner
-    COND_Custom = 8                         UMETA(DisplayName = "Custom"),                          // This property has no particular condition, but wants the ability to toggle on/off via SetCustomIsActiveOverride
-    COND_ReplayOrOwner = 9                  UMETA(DisplayName = "Replay Or Owner"),                 // This property will only send to the replay connection, or to the actors owner
-    COND_ReplayOnly = 10                    UMETA(DisplayName = "Replay Only"),                     // This property will only send to the replay connection
-    COND_SimulatedOnlyNoReplay = 11         UMETA(DisplayName = "Simulated Only No Replay"),        // This property will send to actors only, but not to replay connections
-    COND_SimulatedOrPhysicsNoReplay = 12    UMETA(DisplayName = "Simulated Or Physics No Replay"),  // This property will send to simulated Or bRepPhysics actors, but not to replay connections
-    COND_SkipReplay = 13                    UMETA(DisplayName = "Skip Replay"),                     // This property will not send to the replay connection
-    COND_Never = 15                         UMETA(Hidden),                                          // This property will never be replicated
-    COND_Max = 16                           UMETA(Hidden)
-};</code></p>
 </div>
+<pre><code class="language-c++">    void ARORCharacter::GetLifetimeReplicatedProps(TArray&lt; FLifetimeProperty &gt;&amp; OutLifetimeProps) const
+    {
+        Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+        DOREPLIFETIME(ARORCharacter, IsInCombat);
+        DOREPLIFETIME_CONDITION(ARORCharacter, RowName, COND_InitialOnly);
+        DOREPLIFETIME_CONDITION_NOTIFY(ARORCharacter, OnDieInfo, COND_None, REPNOTIFY_Always);
+    }
+</code></pre>
+<pre><code class="language-c++">    enum ELifetimeCondition
+    {
+        COND_None = 0                           UMETA(DisplayName = &quot;None&quot;),                            // This property has no condition, and will send anytime it changes
+        COND_InitialOnly = 1                    UMETA(DisplayName = &quot;Initial Only&quot;),                    // This property will only attempt to send on the initial bunch
+        COND_OwnerOnly = 2                      UMETA(DisplayName = &quot;Owner Only&quot;),                      // This property will only send to the actor's owner
+        COND_SkipOwner = 3                      UMETA(DisplayName = &quot;Skip Owner&quot;),                      // This property send to every connection EXCEPT the owner
+        COND_SimulatedOnly = 4                  UMETA(DisplayName = &quot;Simulated Only&quot;),                  // This property will only send to simulated actors
+        COND_AutonomousOnly = 5                 UMETA(DisplayName = &quot;Autonomous Only&quot;),                 // This property will only send to autonomous actors
+        COND_SimulatedOrPhysics = 6             UMETA(DisplayName = &quot;Simulated Or Physics&quot;),            // This property will send to simulated OR bRepPhysics actors
+        COND_InitialOrOwner = 7                 UMETA(DisplayName = &quot;Initial Or Owner&quot;),                // This property will send on the initial packet, or to the actors owner
+        COND_Custom = 8                         UMETA(DisplayName = &quot;Custom&quot;),                          // This property has no particular condition, but wants the ability to toggle on/off via SetCustomIsActiveOverride
+        COND_ReplayOrOwner = 9                  UMETA(DisplayName = &quot;Replay Or Owner&quot;),                 // This property will only send to the replay connection, or to the actors owner
+        COND_ReplayOnly = 10                    UMETA(DisplayName = &quot;Replay Only&quot;),                     // This property will only send to the replay connection
+        COND_SimulatedOnlyNoReplay = 11         UMETA(DisplayName = &quot;Simulated Only No Replay&quot;),        // This property will send to actors only, but not to replay connections
+        COND_SimulatedOrPhysicsNoReplay = 12    UMETA(DisplayName = &quot;Simulated Or Physics No Replay&quot;),  // This property will send to simulated Or bRepPhysics actors, but not to replay connections
+        COND_SkipReplay = 13                    UMETA(DisplayName = &quot;Skip Replay&quot;),                     // This property will not send to the replay connection
+        COND_Never = 15                         UMETA(Hidden),                                          // This property will never be replicated
+        COND_Max = 16                           UMETA(Hidden)
+    };
+</code></pre>
 <h2 id="rpc">RPC<a class="headerlink" href="#rpc" title="Permanent link">#</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Server、Client、NetMulticast</p>

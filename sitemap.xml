@@ -86,12 +86,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hohooho.github.io/UE4/Pitch_Yaw_Roll/</loc>
+         <loc>https://hohooho.github.io/UE4/Gameplay%E6%9E%B6%E6%9E%84/</loc>
          <lastmod>2022-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hohooho.github.io/UE4/Server-Client%E6%9E%B6%E6%9E%84/</loc>
+         <loc>https://hohooho.github.io/UE4/Pitch_Yaw_Roll/</loc>
          <lastmod>2022-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -107,6 +107,11 @@
     </url>
     <url>
          <loc>https://hohooho.github.io/UE4/%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/</loc>
+         <lastmod>2022-06-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/UE4/%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81/</loc>
          <lastmod>2022-06-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
