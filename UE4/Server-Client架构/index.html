@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/UE4/%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/">
+        <link rel="canonical" href="https://hohooho.github.io/UE4/Server-Client%E6%9E%B6%E6%9E%84/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>部署iOS打包环境 - 梦之斋</title>
+        <title>Server-Client架构 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -96,7 +96,7 @@
 </li>
                                     
 <li>
-    <a href="../Server-Client%E6%9E%B6%E6%9E%84/" class="dropdown-item">Server-Client架构</a>
+    <a href="./" class="dropdown-item active">Server-Client架构</a>
 </li>
                                     
 <li>
@@ -108,7 +108,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">部署iOS打包环境</a>
+    <a href="../%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
 </li>
                                     
 <li>
@@ -167,12 +167,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84C%2B%2B%E7%B1%BB/" class="nav-link">
+                                <a rel="prev" href="../%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> 上一页
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="nav-link">
+                                <a rel="next" href="../UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="nav-link">
                                     下一页 <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -197,13 +197,32 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#windows" class="nav-link">Windows远程打包</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">网络概要</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#server-client" class="nav-link">Server-Client架构</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#mac" class="nav-link">Mac打包</a>
+            <li class="nav-item" data-level="2"><a href="#replication" class="nav-link">Replication</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rpc" class="nav-link">RPC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#actor" class="nav-link">Actor的所有权</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#actor_1" class="nav-link">Actor相关性</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">优先级设定</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -211,49 +230,133 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="windows">Windows远程打包<a class="headerlink" href="#windows" title="Permanent link">#</a></h2>
-<p>XCode 13.3.1
-Unreal Engine 4.26</p>
-<h3 id="1remotetoolchainprivate">1、RemoteToolChainPrivate<a class="headerlink" href="#1remotetoolchainprivate" title="Permanent link">#</a></h3>
-<div class="admonition fail">
-<p class="admonition-title">报错</p>
-<p>[Remote] Using private key at D:\RemoteToolChainPrivate.key
-    ERROR: Unable to determine home directory for remote user. SSH output:</p>
+<h1 id="_1">网络概要<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<hr />
+<h2 id="server-client">Server-Client架构<a class="headerlink" href="#server-client" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th align="left">ServerOnly</th>
+<th align="left">Server&amp;Clients</th>
+<th align="left">Server&amp;OwningClient</th>
+<th align="left">OwningClientOnly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">AGameMode</td>
+<td align="left">AGameState &amp; APlayerState &amp; APawn</td>
+<td align="left">APlayerController</td>
+<td align="left">AHUD &amp; UMG</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="ue4-server-client" src="../assets/ue4-server-client.png" /></p>
+<h2 id="replication">Replication<a class="headerlink" href="#replication" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Replicated、ReplicatedUsing=FUNCTIONAME</p>
+<p>属性随网络进行复制
+<code>ReplicatedUsing</code> 说明符指定一个回调函数(必须为<code>UFUNCTION</code>)，其在属性通过网络更新时执行</p>
 </div>
-<div class="admonition help">
-<p class="admonition-title">解决方案</p>
-<p>需在打包机（Windows系统）上生成  RemoteToolChainPrivate.key  文件</p>
+<div class="admonition tip">
+<p class="admonition-title">GetLifetimeReplicatedProps</p>
+<p>需重写函数 <code>GetLifetimeReplicatedProps</code>
+并使用<code>DOREPLIFETIME</code>、<code>DOREPLIFETIME_CONDITION</code>等 注册需要同步的属性</p>
+<p>```c++
+void ARORCharacter::GetLifetimeReplicatedProps(TArray&lt; FLifetimeProperty &gt;&amp; OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</p>
+<pre><code>DOREPLIFETIME(ARORCharacter, IsInCombat);
+DOREPLIFETIME_CONDITION(ARORCharacter, RowName, COND_InitialOnly);
+DOREPLIFETIME_CONDITION_NOTIFY(ARORCharacter, OnDieInfo, COND_None, REPNOTIFY_Always);
+</code></pre>
+<p>}
+```</p>
+<p><code>c++
+enum ELifetimeCondition
+{
+    COND_None = 0                           UMETA(DisplayName = "None"),                            // This property has no condition, and will send anytime it changes
+    COND_InitialOnly = 1                    UMETA(DisplayName = "Initial Only"),                    // This property will only attempt to send on the initial bunch
+    COND_OwnerOnly = 2                      UMETA(DisplayName = "Owner Only"),                      // This property will only send to the actor's owner
+    COND_SkipOwner = 3                      UMETA(DisplayName = "Skip Owner"),                      // This property send to every connection EXCEPT the owner
+    COND_SimulatedOnly = 4                  UMETA(DisplayName = "Simulated Only"),                  // This property will only send to simulated actors
+    COND_AutonomousOnly = 5                 UMETA(DisplayName = "Autonomous Only"),                 // This property will only send to autonomous actors
+    COND_SimulatedOrPhysics = 6             UMETA(DisplayName = "Simulated Or Physics"),            // This property will send to simulated OR bRepPhysics actors
+    COND_InitialOrOwner = 7                 UMETA(DisplayName = "Initial Or Owner"),                // This property will send on the initial packet, or to the actors owner
+    COND_Custom = 8                         UMETA(DisplayName = "Custom"),                          // This property has no particular condition, but wants the ability to toggle on/off via SetCustomIsActiveOverride
+    COND_ReplayOrOwner = 9                  UMETA(DisplayName = "Replay Or Owner"),                 // This property will only send to the replay connection, or to the actors owner
+    COND_ReplayOnly = 10                    UMETA(DisplayName = "Replay Only"),                     // This property will only send to the replay connection
+    COND_SimulatedOnlyNoReplay = 11         UMETA(DisplayName = "Simulated Only No Replay"),        // This property will send to actors only, but not to replay connections
+    COND_SimulatedOrPhysicsNoReplay = 12    UMETA(DisplayName = "Simulated Or Physics No Replay"),  // This property will send to simulated Or bRepPhysics actors, but not to replay connections
+    COND_SkipReplay = 13                    UMETA(DisplayName = "Skip Replay"),                     // This property will not send to the replay connection
+    COND_Never = 15                         UMETA(Hidden),                                          // This property will never be replicated
+    COND_Max = 16                           UMETA(Hidden)
+};</code></p>
 </div>
-<h3 id="2-werror">2、-Werror<a class="headerlink" href="#2-werror" title="Permanent link">#</a></h3>
-<div class="admonition fail">
-<p class="admonition-title">报错</p>
-<p>error: variable 'xx' set but not used [-Werror,-Wunused-but-set-variable]</p>
+<h2 id="rpc">RPC<a class="headerlink" href="#rpc" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Server、Client、NetMulticast</p>
+<p>声明 <code>RPC</code> 函数时，会声明一个名为 <code>函数名_Implementation</code> 的附加函数，而这个附加函数才是我们需要实现的 远程函数</p>
 </div>
-<div class="admonition help">
-<p class="admonition-title">解决方案</p>
-<p>XCode版本问题，可以使用 Xcode 13.2.1 版本</p>
+<div class="admonition tip">
+<p class="admonition-title">Reliable、Unreliable</p>
+<p>由于带宽或网络错误会导致 <code>RPC</code> 失败，当声明为 <code>Reliable</code> 时，会确保 <code>RPC</code> 成功
+非必要不要使用 <code>Reliable</code></p>
 </div>
-<h3 id="3the-legacy-build-system">3、The Legacy Build System<a class="headerlink" href="#3the-legacy-build-system" title="Permanent link">#</a></h3>
-<div class="admonition fail">
-<p class="admonition-title">报错</p>
-<p>error: The Legacy Build System will be removed in a future release. You can configure the selected build system and this deprecation message in File &gt; Workspace Settings.</p>
+<div class="admonition tip">
+<p class="admonition-title">WithValidation</p>
+<p>声明 <code>RPC</code> 函数时，会声明一个名为 <code>函数名_Validate</code> 的附加函数，此函数使用相同的参数，但是会返回<code>bool值</code>，只有返回 <code>true</code> 时才会成功调用 <code>RPC</code></p>
 </div>
-<div class="admonition help">
-<p class="admonition-title">解决方案</p>
-<p>Unreal Engine 版本问题，可以使用 4.27</p>
+<p><img alt="ue4_rpc_authority" src="../assets/ue4_rpc_authority.png" /></p>
+<h2 id="actor">Actor的所有权<a class="headerlink" href="#actor" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Actor的所有权</p>
+<p>每个<code>Connection</code>都有一个<code>PlayerController</code>，要确定某个Actor的所有权是否为该连接，查看其最外围的<code>Owner</code>是否为该连接持有的<code>PlayerController</code>即可</p>
 </div>
-<h2 id="mac">Mac打包<a class="headerlink" href="#mac" title="Permanent link">#</a></h2>
-<p>jdk-11.0.15_osx-x64
-Jenkins 2.332.2 LTS</p>
-<p>Jenkins中配置 svn 账号验证不通过，后台报错</p>
-<div class="admonition fail">
-<p class="admonition-title">报错</p>
-<p>SEVERE  h.s.SubversionSCM$ModuleLocation$DescriptorImpl#checkCredentialsId: svn: E175002: SSL handshake failed: 'The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]</p>
+<div class="admonition tip">
+<p class="admonition-title">以下情形需要确定所有权</p>
+<ul>
+<li><code>RPC</code>需要确定哪个客户端将执行<code>Run-On-Client RPC</code></li>
+<li><code>Actor</code>复制与连接相关性<ul>
+<li><code>bOnlyRelevantToOwner=true</code>的<code>Actor</code>，只有同步到拥有此<code>Actor</code>的连接</li>
+</ul>
+</li>
+<li>在涉及所有者时的 <code>Actor</code> 属性复制条件<ul>
+<li><code>DOREPLIFETIME_CONDITION</code> 中的 <code>COND_OwnerOnly</code> 等</li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="admonition help">
-<p class="admonition-title">解决方案</p>
-<p>在文件 /Library/Java/JavaVirtualMachines/jdk-11.0.15.jdk/Contents/Home/conf/security/java.security 中找到 jdk.tls.disabledAlgorithms，删除其中的 TLSv1、TLSv1.1、3DES_EDE_CBC 后重启系统。
-java.security文件没有权限修改，可以将其复制到有权限修改的目录，改完之后再覆盖该文件。</p>
+<h2 id="actor_1">Actor相关性<a class="headerlink" href="#actor_1" title="Permanent link">#</a></h2>
+<p>某一时刻客户端（即该客户端拥有的连接）不一定需要看到服务器上所有的<code>Actor</code>， 虚幻引擎的网络代码中包含一处重要的带宽优化：服务器只会让客户端知道与其相关的 <code>Actor</code>。虚幻引擎（依次）参照以下规则确定<code>Actor</code>与客户端的相关性</p>
+<div class="admonition tip">
+<p class="admonition-title">AActor::IsNetRelevantFor()  相关性判断</p>
+<ol>
+<li>如果 <code>Actor</code> 是 <code>bAlwaysRelevant</code>、归属于 <code>Pawn</code> 或 <code>PlayerController</code>、本身为 <code>Pawn</code> 或者 <code>Pawn</code> 是某些行为（如噪音或伤害）的发起者，则其具有相关性。</li>
+<li>如果 <code>Actor</code> 是 <code>bNetUseOwnerRelevancy</code> 且拥有一个所有者，则使用所有者的相关性。</li>
+<li>如果 <code>Actor</code> 是 <code>bOnlyRelevantToOwner</code> 且没有通过第一轮检查，则不具有相关性。</li>
+<li>如果 <code>Actor</code> 被附加到另一个 <code>Actor</code> 的骨架模型，它的相关性将取决于其所在基础的相关性。</li>
+<li>如果 <code>Actor</code> 是不可见的 <code>(bHidden == true)</code> 并且它的 <code>Root Component</code> 并没有碰撞，那么则不具有相关性，<ul>
+<li>如果没有 <code>Root Component</code>，<code>AActor::IsNetRelevantFor()</code> 会记录一条警告，提示是否要将它设置为 <code>bAlwaysRelevant=true</code>。</li>
+</ul>
+</li>
+<li>如果 <code>AGameNetworkManager</code> 被设置为使用基于距离的相关性，则只要 <code>Actor</code> 低于净剔除距离，即被视为具有相关性。</li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Pawn 和 PlayerController的相关性判断</p>
+<p><code>Pawn</code> 和 <code>PlayerController</code> 将覆盖 <code>AActor::IsNetRelevantFor()</code> 并最终具有不同的相关性条件</p>
+</div>
+<h2 id="_2">优先级设定<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Actor 的 NetPriority</p>
+<p><code>Actor</code>有一个变量 <code>float NetPriority</code>。该变量的数值越大，该<code>Actor</code>的相对带宽就越多。</p>
+<p>和<code>NetPriority=1.0</code> 的<code>Actor</code>相比，<code>NetPriority=2.0</code> 的<code>Actor</code>可以得到两倍的更新频度。</p>
+<p>唯一影响优先顺序的就是它们的比值，无法通过提高所有优先级的数值来增加虚幻引擎的网络性能。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">virtual void AActor::GetNetPriority() override;</p>
+<p>计算<code>Actor</code>的当前优先级时使用了虚函数 <code>AActor::GetNetPriority()</code>。为避免出现饥荒（starvation），<code>AActor::GetNetPriority()</code> 使用<code>Actor</code>上次复制后经过的时间乘以<code>NetPriority</code>。该函数还考虑了<code>Actor</code> 与观察者的相对位置以及两者之间的距离。</p>
 </div></div>
             </div>
         </div>
