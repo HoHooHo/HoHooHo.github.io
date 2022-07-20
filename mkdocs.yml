@@ -14,9 +14,17 @@ nav:
         - 创建组件: UE4/创建组件.md
         - 网络概要: UE4/网络概要.md
         - UE4的垃圾回收: UE4/UE4的垃圾回收.md
+        - 自定义Tick的两种方式: UE4/自定义Tick的两种方式.md
         - 自动编译新创建的C++类: UE4/自动编译新创建的C++类.md
         - 部署iOS打包环境: UE4/部署iOS打包环境.md
         - 生成xcode工程文件: UE4/生成xcode工程文件.md
+        - ASC:
+            - 启用GAS: UE4/ASC/启用GAS.md
+            - AbilitySystemComponent: UE4/ASC/AbilitySystemComponent.md
+            - GameplayTags: UE4/ASC/GameplayTags.md
+            - Attribute: UE4/ASC/Attribute.md
+            - AttributeSet: UE4/ASC/AttributeSet.md
+            - GameplayEffect: UE4/ASC/GameplayEffect.md
     - 小记:
         - AppleWWDRCA证书: Note/AppleWWDRCA证书.md
         - Mac安装Homebrew: Note/Mac安装Homebrew.md
