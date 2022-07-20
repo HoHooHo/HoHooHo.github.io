@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://hohooho.github.io/UE4/ASC/GameplayTags/">
+        <link rel="shortcut icon" href="../../../theme/favicon.ico">
+        
+        <title>GameplayTags - 梦之斋</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
+        <link href="../../../css/markdown-it-admonition.css" rel="stylesheet">
+        <link href="../../../css/style.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+				
+                <a href="../../.."><img class="user-avatar" src="../../../theme/avatar.png" alt="头像"></a>
+				
+				
+				<!--
+                <a class="navbar-brand" href="../../..">梦之斋</a>
+				 -->
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../OpenGL/Pipeline/" class="dropdown-item">渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Pitch_Yaw_Roll/" class="dropdown-item">Pitch，Yaw，Roll</a>
+</li>
+                                    
+<li>
+    <a href="../../%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/" class="dropdown-item">创建组件</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81/" class="dropdown-item">网络概要</a>
+</li>
+                                    
+<li>
+    <a href="../../UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="dropdown-item">UE4的垃圾回收</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%AE%9A%E4%B9%89Tick%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="dropdown-item">自定义Tick的两种方式</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84C%2B%2B%E7%B1%BB/" class="dropdown-item">自动编译新创建的C++类</a>
+</li>
+                                    
+<li>
+    <a href="../../%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="dropdown-item">生成xcode工程文件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">ASC</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../%E5%90%AF%E7%94%A8GAS/" class="dropdown-item">启用GAS</a>
+</li>
+            
+<li>
+    <a href="../AbilitySystemComponent/" class="dropdown-item">AbilitySystemComponent</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">GameplayTags</a>
+</li>
+            
+<li>
+    <a href="../Attribute/" class="dropdown-item">Attribute</a>
+</li>
+            
+<li>
+    <a href="../AttributeSet/" class="dropdown-item">AttributeSet</a>
+</li>
+            
+<li>
+    <a href="../GameplayEffect/" class="dropdown-item">GameplayEffect</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">小记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="dropdown-item">AppleWWDRCA证书</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%AE%89%E8%A3%85Homebrew/" class="dropdown-item">Mac安装Homebrew</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%8D%B8%E8%BD%BDJDK/" class="dropdown-item">Mac卸载JDK</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">面试 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E5%9F%BA%E7%A1%80/" class="dropdown-item">C++基础</a>
+</li>
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E9%AB%98%E7%BA%A7/" class="dropdown-item">C++高级</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">读后感 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/" class="dropdown-item">离经叛道</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../markdown/" class="nav-link">markdown语法</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../AbilitySystemComponent/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Attribute/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gameplaytags" class="nav-link">GameplayTags</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#fgameplaytag" class="nav-link">FGameplayTag</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#fgameplaytagcontainer" class="nav-link">FGameplayTagContainer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gameplaytagmanager" class="nav-link">GameplayTagManager</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gameplaytag" class="nav-link">GameplayTag 编辑器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#loosegameplaytags" class="nav-link">LooseGameplayTags</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gameplaytag_1" class="nav-link">GameplayTag 过滤</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#fgameplaytag_1" class="nav-link">监听 FGameplayTag 的变化</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="gameplaytags">GameplayTags<a class="headerlink" href="#gameplaytags" title="Permanent link">#</a></h1>
+<hr />
+<h2 id="fgameplaytag">FGameplayTag<a class="headerlink" href="#fgameplaytag" title="Permanent link">#</a></h2>
+<p>FGameplayTag 是一系列层次化的名字，如 <code>Parent.Child.Grandchild</code></p>
+<ul>
+<li><code>GameplayTag</code> 通过 <code>GameplayTagManager</code> 进行注册</li>
+<li><code>UAbilitySystemComponent</code> 实现了 <code>IGameplayTagAssetInterface</code> 接口中的方法以便访问它拥有的 <code>GameplayTags</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">在C++中获取GameplayTag对象</p>
+<p>FGameplayTag::RequestGameplayTag(FName("Your.GameplayTag.Name"))</p>
+</div>
+<h2 id="fgameplaytagcontainer">FGameplayTagContainer<a class="headerlink" href="#fgameplaytagcontainer" title="Permanent link">#</a></h2>
+<ul>
+<li>多个 <code>FGameplayTag</code> 可以被存储到 <code>FGameplayTagContainer</code> 中</li>
+<li><code>FGameplayTag</code> 存储在 <code>FGameplayTagCountContainer</code> 中，有一个 <code>TagMap</code>，存储了 <code>GameplayTag</code> 实例的数量</li>
+<li>任何 <code>HasTag()</code> 或 <code>HasMatchingTag()</code> 或其他类似的方法都会检查 <code>TagMapCount</code>，如果 <code>GameplayTag</code> 不存在或者 <code>TagMapCount = 0</code> 将返回 <code>false</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title"><code>GameplayTagContainer</code> 与 <code>TArray&lt;FGameplayTag&gt;</code></p>
+<ul>
+<li>强烈建议使用 <code>GameplayTagContainer</code> 而不是 <code>TArray&lt;FGameplayTag&gt;</code>，因为 <code>GameplayTagContainers</code> 有一些极其高效的函数</li>
+<li><code>FGameplayTag</code> 是标准的 <code>FName</code>，在 <code>FGameplayTagContainers</code> 中 <code>FGameplayTag</code> 可以被高效的打包在一起以完成网络复制<ul>
+<li>需要先在项目设置中 开启<code>Fast Replication</code>。<code>Fast Replication</code> 要求服务器和客户端拥有相同的 <code>GameplayTags</code> 列表</li>
+</ul>
+</li>
+<li>为了遍历， <code>GameplayTagContainers</code> 也可以返回一个 <code>TArray&lt;FGameplayTag&gt;</code>。</li>
+</ul>
+</div>
+<h2 id="gameplaytagmanager">GameplayTagManager<a class="headerlink" href="#gameplaytagmanager" title="Permanent link">#</a></h2>
+<p>对于获取 <code>GameplayTag</code> 的父或子标签这类处理，可以通过 <code>GameplayTagManager</code> 中的一系列函数完成。 <code>GameplayTagManager</code> 实际上以关系节点的方式存储了 <code>GameplayTags</code>， 速度上要远优于字符串的处理和比较。</p>
+<h2 id="gameplaytag">GameplayTag 编辑器<a class="headerlink" href="#gameplaytag" title="Permanent link">#</a></h2>
+<p><code>GameplayTag</code> 需要在 <code>DefaultGameplayTags.ini</code> 中定义。 UE4 的编辑器在项目设置中提供了一个界面可以让开发者管理 <code>GameplayTags</code> 而不需要手动编辑 <code>DefaultGameplayTags.ini</code>。<code>GameplayTag</code> 编辑器可以创建、重命名、删除 <code>GameplayTag</code>，也可以查找 <code>GameplayTag</code> 的引用。</p>
+<div class="admonition tip">
+<p class="admonition-title">查找 <code>GameplayTag</code> 的引用</p>
+<p>查找 <code>GameplayTag</code> 的引用只会查找蓝图中的引用。 </p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><code>GameplayTag</code> 的重命名</p>
+<ul>
+<li>重命名 <code>GameplayTag</code> 将会创建一个重定向，相关资源仍然引用原来的 <code>GameplayTag</code>，原来的<code>GameplayTag</code> 将会被定向到新的 <code>GameplayTag</code>。</li>
+<li>推荐创建一个新的 <code>GameplayTag</code>, 然后手动更新所有引用到这个新<code>GameplayTag</code>，然后删除旧的<code>GameplayTag</code>，这样可以避免重定向。</li>
+</ul>
+</div>
+<p>另外，当开启<code>Fast Replication</code>后，<code>GameplayTag</code>编辑器可配置进一步优化 <code>GameplayTags</code> 的网络复制。</p>
+<h2 id="loosegameplaytags">LooseGameplayTags<a class="headerlink" href="#loosegameplaytags" title="Permanent link">#</a></h2>
+<p>由 <code>GameplayEffect</code> 添加的 <code>GameplayTag</code> 会被复制。 <code>ASC</code> 也可以添加不会被复制并且需要手动管理的 <code>LooseGameplayTags</code></p>
+<div class="admonition tip">
+<p class="admonition-title">LooseGameplayTag</p>
+<p>可以使用 UAbilitySystemComponent::AddLooseGameplayTag() 和 UAbilitySystemComponent::RemoveLooseGameplayTag()</p>
+</div>
+<h2 id="gameplaytag_1">GameplayTag 过滤<a class="headerlink" href="#gameplaytag_1" title="Permanent link">#</a></h2>
+<ul>
+<li><code>UPROPERTY(Meta = (Categories = "XX"))</code><ul>
+<li><code>GameplayTags</code> 和 <code>GameplayTagContainers</code> 属性有可选的 <code>UPROPERTY</code> 说明符，可以用来在蓝图中实现标签的过滤，仅展示出父标签为 <code>XX</code> 的 <code>GameplayTags</code>。</li>
+</ul>
+</li>
+<li><code>UFUNCTION(Meta = (GameplayTagFilter = "XX"))</code><ul>
+<li>当把 <code>GameplayTag</code> 当作函数的参数时，可以通过 <code>Meta = (GameplayTagFilter = XX)</code>完成过滤。</li>
+<li><code>GameplayTagContainer</code> 参数不能过滤</li>
+</ul>
+</li>
+</ul>
+<h2 id="fgameplaytag_1">监听 FGameplayTag 的变化<a class="headerlink" href="#fgameplaytag_1" title="Permanent link">#</a></h2>
+<p><code>ASC</code> 可以使用枚举 <code>EGameplayTagEventType</code> 来注册代理监听 <code>GameplayTag</code> 的变化。</p>
+<ul>
+<li>EGameplayTagEventType<ul>
+<li>NewOrRemoved ： Event only happens when tag is new or completely removed</li>
+<li>AnyCountChange ： Event happens any time tag “count” changes</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-c++">AbilitySystemComponent-&gt;RegisterGameplayTagEvent(FGameplayTag::RequestGameplayTag(FName(&quot;State.Debuff.Stun&quot;)), EGameplayTagEventType::NewOrRemoved).AddUObject(this, &amp;AGDPlayerState::StunTagChanged);
+
+virtual void StunTagChanged(const FGameplayTag CallbackTag, int32 NewCount);
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

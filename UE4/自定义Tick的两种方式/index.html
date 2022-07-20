@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://hohooho.github.io/UE4/Gameplay%E6%9E%B6%E6%9E%84/">
+        <link rel="canonical" href="https://hohooho.github.io/UE4/%E8%87%AA%E5%AE%9A%E4%B9%89Tick%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/">
         <link rel="shortcut icon" href="../../theme/favicon.ico">
         
-        <title>Server-Client架构 - 梦之斋</title>
+        <title>自定义Tick的两种方式 - 梦之斋</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -83,7 +83,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -104,7 +104,7 @@
 </li>
                                     
 <li>
-    <a href="../%E8%87%AA%E5%AE%9A%E4%B9%89Tick%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="dropdown-item">自定义Tick的两种方式</a>
+    <a href="./" class="dropdown-item active">自定义Tick的两种方式</a>
 </li>
                                     
 <li>
@@ -201,6 +201,16 @@
                             </a>
                         </li>
                             <li class="nav-item">
+                                <a rel="prev" href="../UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84C%2B%2B%E7%B1%BB/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
                     </ul>
@@ -221,20 +231,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#server-client" class="nav-link">Server-Client架构</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">架构</a>
+            <li class="nav-item" data-level="1"><a href="#ftickablegameobject" class="nav-link">继承 FTickableGameObject</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#agamemode" class="nav-link">AGameMode</a>
+            
+            <li class="nav-item" data-level="1"><a href="#ftickerdelegate" class="nav-link">创建代理 FTickerDelegate</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#rpc" class="nav-link">RPC</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -242,53 +245,26 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="server-client">Server-Client架构<a class="headerlink" href="#server-client" title="Permanent link">#</a></h1>
-<hr />
-<h2 id="_1">架构<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th align="left">ServerOnly</th>
-<th align="left">Server&amp;Clients</th>
-<th align="left">Server&amp;OwningClient</th>
-<th align="left">OwningClientOnly</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">AGameMode</td>
-<td align="left">AGameState &amp; APlayerState &amp; APawn</td>
-<td align="left">APlayerController</td>
-<td align="left">AHUD &amp; UMG</td>
-</tr>
-</tbody>
-</table>
-<p><img alt="ue4-server-client" src="../assets/ue4-server-client.png" /></p>
-<h2 id="agamemode">AGameMode<a class="headerlink" href="#agamemode" title="Permanent link">#</a></h2>
-<pre><code class="language-c++">namespace MatchState
+<h1 id="ftickablegameobject">继承 FTickableGameObject<a class="headerlink" href="#ftickablegameobject" title="Permanent link">#</a></h1>
+<pre><code class="language-c++">UCLASS()
+class UCoolDownMgr : public UObject, public FTickableGameObject
 {
-    const FName EnteringMap      = FName(TEXT(&quot;EnteringMap&quot;));
-    const FName WaitingToStart   = FName(TEXT(&quot;WaitingToStart&quot;));
-    const FName InProgress       = FName(TEXT(&quot;InProgress&quot;));
-    const FName WaitingPostMatch = FName(TEXT(&quot;WaitingPostMatch&quot;));
-    const FName LeavingMap       = FName(TEXT(&quot;LeavingMap&quot;));
-    const FName Aborted          = FName(TEXT(&quot;Aborted&quot;));
-}
+    GENERATED_BODY()
+public:
+    // Sets default values for this character's properties
+    UCoolDownMgr();
+    virtual ~UCoolDownMgr();
+    // Begin FTickableGameObject Interface.
+    virtual void Tick(float DeltaTime) override;
+    virtual bool IsTickable() const override;
+    virtual TStatId GetStatId() const override;
+    // End FTickableGameObject Interface.
+};
 </code></pre>
-<h2 id="rpc">RPC<a class="headerlink" href="#rpc" title="Permanent link">#</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Server、Client、NetMulticast</p>
-<p>声明 RPC 函数时，会声明一个名为 <code>函数名_Implementation</code> 的附加函数，而这个附加函数才是我们需要实现的 远程函数</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Reliable、Unreliable</p>
-<p>由于带宽或网络错误会导致 RPC 失败，当声明为 Reliable 时，会确保 RPC 成功</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">WithValidation</p>
-<p>声明 RPC 函数时，会声明一个名为 <code>函数名_Validate</code> 的附加函数，此函数使用相同的参数，但是会返回<code>bool值</code>，只有返回 <code>true</code> 时才会成功调用 RPC</p>
-</div>
-<p><img alt="ue4_rpc_authority" src="../assets/ue4_rpc_authority.png" /></p></div>
+<h1 id="ftickerdelegate">创建代理 FTickerDelegate<a class="headerlink" href="#ftickerdelegate" title="Permanent link">#</a></h1>
+<pre><code class="language-c++">TickDelegate = FTickerDelegate::CreateUObject(this, &amp;UShooterGameInstance::Tick);
+TickDelegateHandle = FTicker::GetCoreTicker().AddTicker(TickDelegate);
+</code></pre></div>
             </div>
         </div>
 

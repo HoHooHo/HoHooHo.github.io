@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://hohooho.github.io/UE4/ASC/AttributeSet/">
+        <link rel="shortcut icon" href="../../../theme/favicon.ico">
+        
+        <title>AttributeSet - 梦之斋</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
+        <link href="../../../css/markdown-it-admonition.css" rel="stylesheet">
+        <link href="../../../css/style.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+				
+                <a href="../../.."><img class="user-avatar" src="../../../theme/avatar.png" alt="头像"></a>
+				
+				
+				<!--
+                <a class="navbar-brand" href="../../..">梦之斋</a>
+				 -->
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../OpenGL/Pipeline/" class="dropdown-item">渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Pitch_Yaw_Roll/" class="dropdown-item">Pitch，Yaw，Roll</a>
+</li>
+                                    
+<li>
+    <a href="../../%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/" class="dropdown-item">创建组件</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81/" class="dropdown-item">网络概要</a>
+</li>
+                                    
+<li>
+    <a href="../../UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="dropdown-item">UE4的垃圾回收</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%AE%9A%E4%B9%89Tick%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="dropdown-item">自定义Tick的两种方式</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84C%2B%2B%E7%B1%BB/" class="dropdown-item">自动编译新创建的C++类</a>
+</li>
+                                    
+<li>
+    <a href="../../%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="dropdown-item">生成xcode工程文件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">ASC</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../%E5%90%AF%E7%94%A8GAS/" class="dropdown-item">启用GAS</a>
+</li>
+            
+<li>
+    <a href="../AbilitySystemComponent/" class="dropdown-item">AbilitySystemComponent</a>
+</li>
+            
+<li>
+    <a href="../GameplayTags/" class="dropdown-item">GameplayTags</a>
+</li>
+            
+<li>
+    <a href="../Attribute/" class="dropdown-item">Attribute</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">AttributeSet</a>
+</li>
+            
+<li>
+    <a href="../GameplayEffect/" class="dropdown-item">GameplayEffect</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">小记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="dropdown-item">AppleWWDRCA证书</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%AE%89%E8%A3%85Homebrew/" class="dropdown-item">Mac安装Homebrew</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%8D%B8%E8%BD%BDJDK/" class="dropdown-item">Mac卸载JDK</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">面试 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E5%9F%BA%E7%A1%80/" class="dropdown-item">C++基础</a>
+</li>
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E9%AB%98%E7%BA%A7/" class="dropdown-item">C++高级</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">读后感 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/" class="dropdown-item">离经叛道</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../markdown/" class="nav-link">markdown语法</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Attribute/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../GameplayEffect/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#attributeset" class="nav-link">AttributeSet</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#attributeset_1" class="nav-link">AttributeSet 定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">定义Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#attributeset_2" class="nav-link">AttributeSet 几个重要的函数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="attributeset">AttributeSet<a class="headerlink" href="#attributeset" title="Permanent link">#</a></h1>
+<hr />
+<h2 id="attributeset_1">AttributeSet 定义<a class="headerlink" href="#attributeset_1" title="Permanent link">#</a></h2>
+<p><code>AttributeSet</code> 负责定义并管理 <code>Attributes</code>。</p>
+<div class="admonition tip">
+<p class="admonition-title">AttributeSet</p>
+<ul>
+<li><code>Actor</code> 的 <code>AttributeSet</code>，会在其 <code>ASC</code> 组件的函数 <code>UAbilitySystemComponent::InitializeComponent</code> 中自动注册</li>
+<li>一个 <code>ASC</code> 可以有 <code>N</code> 个 <code>AttributeSet</code><ul>
+<li><code>AttributeSet</code> 的内存开销很低。</li>
+</ul>
+</li>
+<li>同一个 <code>AttributeSet</code> 在一个 <code>ASC</code> 中最多只能有 <code>1</code> 个。</li>
+</ul>
+</div>
+<h2 id="attributes">定义Attributes<a class="headerlink" href="#attributes" title="Permanent link">#</a></h2>
+<pre><code class="language-c++">// RPGAttributeSet.h
+//建议定义该宏，它将会为属性生成 Getter和Setter 等函数。
+#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
+    GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+    GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
+    GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
+    GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+
+UPROPERTY(BlueprintReadOnly, Category = &quot;HP&quot;, ReplicatedUsing = OnRep_HP)
+FGameplayAttributeData HP;
+ATTRIBUTE_ACCESSORS(UGTAttributeSet, HP);
+
+UFUNCTION()
+virtual void OnRep_HP(const FGameplayAttributeData&amp; OldHP);
+
+//////////////////////////////////////////////////////
+// RPGAttributeSet.cpp
+void UGTAttributeSet::OnRep_HP(const FGameplayAttributeData&amp; OldHP)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGTAttributeSet, HP, OldHP);
+}
+
+void UGTAttributeSet::GetLifetimeReplicatedProps(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UGTAttributeSet, HP, COND_None, REPNOTIFY_Always);
+}
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Attribute</p>
+<ul>
+<li><code>REPNOTIFY_Always</code>：告诉 <code>OnRep</code> 函数，在本地值和服务器下发的值即使相同也会触发（为了预测），默认情况下 <code>OnRep</code> 不会触发。</li>
+<li>如果 <code>Attribute</code> 不需要复制（如：Meta Attribute），那么 <code>OnRep</code> 和 <code>GetLifetimeReplicatedProps</code> 可以跳过。</li>
+</ul>
+</div>
+<h2 id="attributeset_2">AttributeSet 几个重要的函数<a class="headerlink" href="#attributeset_2" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">PreAttributeChange</p>
+<ul>
+<li>在 <code>AttributeSet</code> 的 <code>CurrentValue</code> 被改变之前调用，主要对 <code>NewValue</code> 进行 <code>Clamp</code> 修正</li>
+<li>在这里做的任何限制都不会永久性地修改 <code>ASC</code> 中的 <code>Modifier</code>, 只会修改查询 <code>Modifier</code> 的返回值<ul>
+<li><code>GameplayEffectExecutionCalculations</code> 和 <code>ModifierMagnitudeCalculations</code> 这种自所有 <code>Modifier</code> 重新计算 <code>CurrentValue</code> 的函数需要再次执行 <code>Clamp</code> 操作</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">PostGameplayEffectExecute</p>
+<ul>
+<li>仅在 <code>Instant GE</code> 对 <code>Attribute</code> 的 <code>BaseValue</code> 修改之后触发</li>
+<li>当 <code>PostGameplayEffectExecute</code> 被调用时，对属性的改变已经发生，但还没有复制给客户端，因此在此处进行 <code>Clamp</code> 不会执行两次复制，客户端只会收到 <code>Clamp</code> 后的结果。</li>
+</ul>
+</div>
+<pre><code class="language-c++">class GAMEPLAYABILITIES_API UAttributeSet : public UObject
+{
+public:
+    /**
+     *  Called just before modifying the value of an attribute. AttributeSet can make additional modifications here. Return true to continue, or false to throw out the modification.
+     *  Note this is only called during an 'execute'. E.g., a modification to the 'base value' of an attribute. It is not called during an application of a GameplayEffect, such as a 5 ssecond +10 movement speed buff.
+     */ 
+    virtual bool PreGameplayEffectExecute(struct FGameplayEffectModCallbackData &amp;Data) { return true; }
+
+    /**
+     *  Called just before a GameplayEffect is executed to modify the base value of an attribute. No more changes can be made.
+     *  Note this is only called during an 'execute'. E.g., a modification to the 'base value' of an attribute. It is not called during an application of a GameplayEffect, such as a 5 ssecond +10 movement speed buff.
+     */
+    virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData &amp;Data) { }
+
+    /**
+     *  An &quot;On Aggregator Change&quot; type of event could go here, and that could be called when active gameplay effects are added or removed to an attribute aggregator.
+     *  It is difficult to give all the information in these cases though - aggregators can change for many reasons: being added, being removed, being modified, having a modifier change, immunity, stacking rules, etc.
+     */
+
+    /**
+     *  Called just before any modification happens to an attribute. This is lower level than PreAttributeModify/PostAttribute modify.
+     *  There is no additional context provided here since anything can trigger this. Executed effects, duration based effects, effects being removed, immunity being applied, stacking rules changing, etc.
+     *  This function is meant to enforce things like &quot;Health = Clamp(Health, 0, MaxHealth)&quot; and NOT things like &quot;trigger this extra thing if damage is applied, etc&quot;.
+     *  
+     *  NewValue is a mutable reference so you are able to clamp the newly applied value as well.
+     */
+    virtual void PreAttributeChange(const FGameplayAttribute&amp; Attribute, float&amp; NewValue) { }
+
+    /**
+     *  This is called just before any modification happens to an attribute's base value when an attribute aggregator exists.
+     *  This function should enforce clamping (presuming you wish to clamp the base value along with the final value in PreAttributeChange)
+     *  This function should NOT invoke gameplay related events or callbacks. Do those in PreAttributeChange() which will be called prior to the
+     *  final value of the attribute actually changing.
+     */
+    virtual void PreAttributeBaseChange(const FGameplayAttribute&amp; Attribute, float&amp; NewValue) const { }
+
+    /** Callback for when an FAggregator is created for an attribute in this set. Allows custom setup of FAggregator::EvaluationMetaData */
+    virtual void OnAttributeAggregatorCreated(const FGameplayAttribute&amp; Attribute, FAggregator* NewAggregator) const { }
+};
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

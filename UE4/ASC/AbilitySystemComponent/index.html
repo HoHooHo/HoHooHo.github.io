@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://hohooho.github.io/UE4/ASC/AbilitySystemComponent/">
+        <link rel="shortcut icon" href="../../../theme/favicon.ico">
+        
+        <title>AbilitySystemComponent - 梦之斋</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/darcula.min.css">
+        <link href="../../../css/markdown-it-admonition.css" rel="stylesheet">
+        <link href="../../../css/style.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+
+				
+                <a href="../../.."><img class="user-avatar" src="../../../theme/avatar.png" alt="头像"></a>
+				
+				
+				<!--
+                <a class="navbar-brand" href="../../..">梦之斋</a>
+				 -->
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../OpenGL/Pipeline/" class="dropdown-item">渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/VAO_VBO_EBO/" class="dropdown-item">VAO、VBO、EBO</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E7%85%A7/" class="dropdown-item">光照</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/" class="dropdown-item">法线贴图</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E6%9D%90%E8%B4%A8/" class="dropdown-item">材质</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%85%89%E6%BA%90/" class="dropdown-item">光源</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8/" class="dropdown-item">几何着色器</a>
+</li>
+                                    
+<li>
+    <a href="../../../OpenGL/%E9%AB%98%E7%BA%A7GLSL/" class="dropdown-item">高级GLSL</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">UE4 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Pitch_Yaw_Roll/" class="dropdown-item">Pitch，Yaw，Roll</a>
+</li>
+                                    
+<li>
+    <a href="../../%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/" class="dropdown-item">创建组件</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A6%81/" class="dropdown-item">网络概要</a>
+</li>
+                                    
+<li>
+    <a href="../../UE4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="dropdown-item">UE4的垃圾回收</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%AE%9A%E4%B9%89Tick%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="dropdown-item">自定义Tick的两种方式</a>
+</li>
+                                    
+<li>
+    <a href="../../%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84C%2B%2B%E7%B1%BB/" class="dropdown-item">自动编译新创建的C++类</a>
+</li>
+                                    
+<li>
+    <a href="../../%E9%83%A8%E7%BD%B2iOS%E6%89%93%E5%8C%85%E7%8E%AF%E5%A2%83/" class="dropdown-item">部署iOS打包环境</a>
+</li>
+                                    
+<li>
+    <a href="../../%E7%94%9F%E6%88%90xcode%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/" class="dropdown-item">生成xcode工程文件</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">ASC</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../%E5%90%AF%E7%94%A8GAS/" class="dropdown-item">启用GAS</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">AbilitySystemComponent</a>
+</li>
+            
+<li>
+    <a href="../GameplayTags/" class="dropdown-item">GameplayTags</a>
+</li>
+            
+<li>
+    <a href="../Attribute/" class="dropdown-item">Attribute</a>
+</li>
+            
+<li>
+    <a href="../AttributeSet/" class="dropdown-item">AttributeSet</a>
+</li>
+            
+<li>
+    <a href="../GameplayEffect/" class="dropdown-item">GameplayEffect</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">小记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Note/AppleWWDRCA%E8%AF%81%E4%B9%A6/" class="dropdown-item">AppleWWDRCA证书</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%AE%89%E8%A3%85Homebrew/" class="dropdown-item">Mac安装Homebrew</a>
+</li>
+                                    
+<li>
+    <a href="../../../Note/Mac%E5%8D%B8%E8%BD%BDJDK/" class="dropdown-item">Mac卸载JDK</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">面试 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E5%9F%BA%E7%A1%80/" class="dropdown-item">C++基础</a>
+</li>
+                                    
+<li>
+    <a href="../../../Interview/C%2B%2B%E9%AB%98%E7%BA%A7/" class="dropdown-item">C++高级</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">读后感 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../Read/%E7%A6%BB%E7%BB%8F%E5%8F%9B%E9%81%93/" class="dropdown-item">离经叛道</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../markdown/" class="nav-link">markdown语法</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../%E5%90%AF%E7%94%A8GAS/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一页
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../GameplayTags/" class="nav-link">
+                                    下一页 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/HoHooHo/HoHooHo.github.io" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#abilitysystemcomponent" class="nav-link">AbilitySystemComponent</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#asc" class="nav-link">ASC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#owneractor-avataractor" class="nav-link">OwnerActor 和 AvatarActor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#asc_1" class="nav-link">ASC复制模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#asc_2" class="nav-link">ASC的创建和初始化</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="abilitysystemcomponent">AbilitySystemComponent<a class="headerlink" href="#abilitysystemcomponent" title="Permanent link">#</a></h1>
+<hr />
+<h2 id="asc">ASC<a class="headerlink" href="#asc" title="Permanent link">#</a></h2>
+<p><code>UAbilitySystemComponent(ASC)</code>是整个技能系统的核心，<code>ASC</code> 本质上是一个 <code>UActorComponent</code>，用于处理技能系统中的所有交互。</p>
+<ul>
+<li><code>ASC</code> 持有被赋予的<code>GameplayAbilities</code>，<code>FGameplayAbilitySpecContainer ActivatableAbilities</code>。</li>
+<li><code>ASC</code> 持有当前已激活的<code>GameplayEffects</code>，<code>FActiveGameplayEffectsContainer ActiveGameplayEffects</code>。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">迭代<code>ASC</code>的<code>ActivatableAbilities.Items</code></p>
+<p>在迭代<code>ASC</code>的<code>ActivatableAbilities.Items</code>之前，一定要添加 <code>ABILITYLIST_SCOPE_LOCK()</code>，在 <code>ABILITYLIST_SCOPE_LOCK()</code> 过程中更不要删除 <code>Ability</code>。</p>
+</div>
+<h2 id="owneractor-avataractor">OwnerActor 和 AvatarActor<a class="headerlink" href="#owneractor-avataractor" title="Permanent link">#</a></h2>
+<p><code>ASC</code> 的 <code>OwnerActor</code>和<code>AvatarActor</code>可以是同一个<code>Actor</code>，如 MOBA 中的野怪。也可以是不同的<code>Actor</code>，如 MOBA 中玩家控制的 Character，此时 OwnerActor 通常为 <code>PlayerState</code>。</p>
+<div class="admonition tip">
+<p class="admonition-title">IAbilitySystemInterface</p>
+<p>如果<code>OwnerActor</code>和<code>AvatarActor</code>是不同的 Actor，则两者都需实现<code>IAbilitySystemInterface</code></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><code>PlayerState</code> 的 <code>NetUpdateFrequency</code></p>
+<ul>
+<li>如果 <code>ASC</code> 的 <code>OwnerActor</code> 为 <code>PlayerState</code>，则需增加 <code>PlayerState</code> 的网络更新频率 <code>NetUpdateFrequency</code>，</li>
+<li><code>PlayerState</code> 的默认更新频率非常低，会导致 <code>Attributes</code> 和 <code>GameplayTags</code> 的同步延迟，</li>
+<li>确保启用了 <code>Adaptive Network Update Frequency</code>，默认是关闭的</li>
+</ul>
+</div>
+<h2 id="asc_1">ASC复制模式<a class="headerlink" href="#asc_1" title="Permanent link">#</a></h2>
+<p><code>ASC</code> 提供了三种不同的复制模式，用于复制 <code>GameplayEffects</code>、<code>GameplayTags</code> 和 <code>GameplayCues</code>。而 <code>Attributes</code> 由 <code>AttributeSet</code> 复制。</p>
+<table>
+<thead>
+<tr>
+<th>复制模式</th>
+<th>使用场景</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>单人</td>
+<td>GameplayEffect 会被复制到所有客户端。</td>
+</tr>
+<tr>
+<td>Mixed</td>
+<td>多人，玩家控制的Actor</td>
+<td>GameplayEffect仅被复制到 Owner Client，GameplayTags和GameplayCus会被复制到所有客户端。</td>
+</tr>
+<tr>
+<td>Minimal</td>
+<td>多人，AI控制的Actor</td>
+<td>GameplayEffect不会被复制到任何客户端，GameplayTags和GameplayCus会被复制到所有客户端</td>
+</tr>
+</tbody>
+</table>
+<h2 id="asc_2">ASC的创建和初始化<a class="headerlink" href="#asc_2" title="Permanent link">#</a></h2>
+<p><code>ASC</code> 通常在 <code>OwnerActor</code> 的构造函数中创建，并设置复制模式，这一步必须在C++中完成。</p>
+<pre><code class="language-c++">ARPGPlayerState::ARPGPlayerState()
+{
+    // Create ability system component, and set it to be explicitly replicated
+    AbilitySystemComponent = CreateDefaultSubobject&lt;URPGAbilitySystemComponent&gt;(TEXT(&quot;AbilitySystemComponent&quot;));
+    AbilitySystemComponent-&gt;SetIsReplicated(true);
+    AbilitySystemComponent-&gt;SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+
+    NetUpdateFrequency = 100.0f;
+    //.
+}
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">ASC的初始化</p>
+<p><code>ASC</code> 需要在 <code>OwnerActor</code> 和 <code>AvatarActor</code> 中都进行初始化，而且必须在<code>服务器</code>和<code>客户端</code>都要完成初始化。</p>
+</div>
+<h3 id="owneractor-avataractor_1">当 OwnerActor == AvatarActor 时<a class="headerlink" href="#owneractor-avataractor_1" title="Permanent link">#</a></h3>
+<p>对于玩家控制的角色，ASC 的 OwnerActor和AvatarActor 都为 Pawn 时，通常</p>
+<pre><code>-服务器：在 Pawn 的 PossessedBy() 函数中完成 ASC 的初始化；
+-客户端：在 PlayerController 的 AcknowledgePawn() 函数中完成 ASC 的初始化。
+</code></pre>
+<pre><code class="language-c++">
+/* ARPGCharacterBase.cpp */
+void ARPGCharacterBase::PossessedBy(AController * NewController)
+{
+    Super::PossessedBy(NewController);
+​
+    if (AbilitySystemComponent)
+    {
+        AbilitySystemComponent-&gt;InitAbilityActorInfo(this, this);
+    }
+    //...
+}
+
+/* ARPGPlayerControllerBase.cpp*/
+void ARPGPlayerControllerBase::AcknowledgePossession(APawn* P)
+{
+    Super::AcknowledgePossession(P);
+​
+    ARPGCharacterBase* CharacterBase = Cast&lt;ARPGCharacterBase&gt;(P);
+    if (CharacterBase)
+    {
+        CharacterBase-&gt;GetAbilitySystemComponent()-&gt;InitAbilityActorInfo(CharacterBase, CharacterBase);
+    }
+    //...
+}
+</code></pre>
+<h3 id="owneractor-avataractor_2">当 OwnerActor != AvatarActor 时<a class="headerlink" href="#owneractor-avataractor_2" title="Permanent link">#</a></h3>
+<p>对于玩家控制的角色，ASC 的 OwnerActor 为 PlayerState，AvatarActor 为 Pawn 时，通常</p>
+<pre><code>- 服务器：在 Pawn 的 PossessedBy() 函数中完成 ASC 的初始化（与上面相同）；
+- 客户端：在 Pawn 的 OnRep_PlayerState() 函数中 完成 ASC 的初始化（这将确保 PlayerState 在客户端已存在）。
+</code></pre>
+<pre><code class="language-c++">
+// Server only
+void ARPGHeroCharacter::PossessedBy(AController * NewController)
+{
+    Super::PossessedBy(NewController);
+​
+    ARPGPlayerState* PS = GetPlayerState&lt;ARPGPlayerState&gt;();
+    if (PS)
+    {
+        // Set the ASC on the Server. Clients do this in OnRep_PlayerState()
+        AbilitySystemComponent = Cast&lt;URPGAbilitySystemComponent&gt;(PS-&gt;GetAbilitySystemComponent());
+​
+        // AI won't have PlayerControllers so we can init again here just to be sure. No harm in initing twice for heroes that have PlayerControllers.
+        PS-&gt;GetAbilitySystemComponent()-&gt;InitAbilityActorInfo(PS, this);
+    }
+
+    //...
+}
+
+// Client only
+void ARPGHeroCharacter::OnRep_PlayerState()
+{
+    Super::OnRep_PlayerState();
+​
+    ARPGPlayerState* PS = GetPlayerState&lt;ARPGPlayerState&gt;();
+    if (PS)
+    {
+        // Set the ASC for clients. Server does this in PossessedBy.
+        AbilitySystemComponent = Cast&lt;URPGAbilitySystemComponent&gt;(PS-&gt;GetAbilitySystemComponent());
+​
+        // Init ASC Actor Info for clients. Server will init its ASC when it possesses a new Actor.
+        AbilitySystemComponent-&gt;InitAbilityActorInfo(PS, this);
+    }
+​
+    // ...
+}
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">如果看到如下日志，则说明没有在客户端初始化 ASC</p>
+<p>LogAbilitySystem: Warning: Can't activate LocalOnly or LocalPredicted ability %s when not local!</p>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>请在下面输入你要搜索的文本（仅支持英文）：</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
