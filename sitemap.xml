@@ -175,4 +175,19 @@
          <lastmod>2022-08-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://hohooho.github.io/UE4/%E5%A4%9A%E4%BA%BA%E6%A8%A1%E5%BC%8F/Client-to-Server/</loc>
+         <lastmod>2022-08-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/UE4/%E5%A4%9A%E4%BA%BA%E6%A8%A1%E5%BC%8F/DS-RecieveClient/</loc>
+         <lastmod>2022-08-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hohooho.github.io/UE4/%E5%A4%9A%E4%BA%BA%E6%A8%A1%E5%BC%8F/DS-ServerTravel/</loc>
+         <lastmod>2022-08-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
