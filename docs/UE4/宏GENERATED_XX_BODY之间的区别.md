@@ -12,7 +12,9 @@ UE4中定义了多种 `GENERATED_XX_BODY` 的宏，看宏定义最终只有 `GEN
     - `GENERATED_IINTERFACE_BODY`
     - `GENERATED_BODY_LEGACY`
 
-而 `GENERATED_BODY` 和 `GENERATED_BODY_LEGACY` 最终也是指向宏 `BODY_MACRO_COMBINE_INNER`，只是后缀不同
+
+!!! tip "`BODY_MACRO_COMBINE_INNER`"
+	`GENERATED_BODY` 和 `GENERATED_BODY_LEGACY` 最终指向宏 `BODY_MACRO_COMBINE_INNER`，只是后缀不同而已
 
 ```c++
 // This pair of macros is used to help implement GENERATED_BODY() and GENERATED_USTRUCT_BODY()
@@ -33,11 +35,11 @@ UE4中定义了多种 `GENERATED_XX_BODY` 的宏，看宏定义最终只有 `GEN
 
 ## BODY_MACRO_COMBINE_INNER
 
-- `#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D`
+
+!!! tip "`#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D`"
     - 通过传入的字符串组合成一个新的宏，对应的宏定义在 `"XX.generated.h"` 头文件中
     - `"XX.generated.h"` 可以在 `MyProject/Intermediate/Build/Win64` 目录下找到
-
-在 `"XX.generated.h"` 的最下方可以看到 `#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D` 生成的字符串对应的宏定义
+	- 在 `"XX.generated.h"` 的最下方可以看到 `#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D` 生成的字符串对应的宏定义
 
 ```c++
 #define MyProject_Source_MyProject_Public_MyPlayerState_h_16_GENERATED_BODY_LEGACY \
@@ -65,13 +67,12 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 ## CONSTRUCTORS
 
-- `MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS`
-    - `NO_API AMyPlayerState(const FObjectInitializer& ObjectInitializer)`;
-    - `DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMyPlayerState)`
-    - 带参数 `const FObjectInitializer& ObjectInitializer` 的构造函数
-- `MyProject_Source_MyProject_Public_MyPlayerState_h_16_ENHANCED_CONSTRUCTORS`
-    - `DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMyPlayerState)`
-    - 默认无参构造函数
+
+!!! tip "CONSTRUCTORS"
+	- 带参数 `const FObjectInitializer& ObjectInitializer` 的构造函数
+		- `MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS`
+	- 默认无参构造函数
+		- `MyProject_Source_MyProject_Public_MyPlayerState_h_16_ENHANCED_CONSTRUCTORS`
 
 ```c++
 #define MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS \
@@ -98,12 +99,14 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyPlayerState); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMyPlayerState)
 ```
 
-## DEFINE_DEFAULT_CONSTRUCTOR_CALL 和 DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL
+## CONSTRUCTOR_CALL
 
-- `DEFINE_DEFAULT_CONSTRUCTOR_CALL`
-    - 无参构造函数构造器
-- `DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL`
-    - 带参数 `const FObjectInitializer& X `的构造函数构造器
+
+!!! tip "CONSTRUCTOR_CALL"
+	- 无参构造函数构造器
+		- `DEFINE_DEFAULT_CONSTRUCTOR_CALL`
+	- 带参数 `const FObjectInitializer& X `的构造函数构造器
+		- `DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL`
 
 ```c++
 //ObjectMacros.h
