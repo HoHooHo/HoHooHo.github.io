@@ -239,7 +239,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#define_default_constructor_call-define_default_object_initializer_constructor_call" class="nav-link">DEFINE_DEFAULT_CONSTRUCTOR_CALL 和 DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL</a>
+            <li class="nav-item" data-level="2"><a href="#constructor_call" class="nav-link">CONSTRUCTOR_CALL</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -267,7 +267,10 @@
 </ul>
 </li>
 </ul>
-<p>而 <code>GENERATED_BODY</code> 和 <code>GENERATED_BODY_LEGACY</code> 最终也是指向宏 <code>BODY_MACRO_COMBINE_INNER</code>，只是后缀不同</p>
+<div class="admonition tip">
+<p class="admonition-title"><code>BODY_MACRO_COMBINE_INNER</code></p>
+<p><code>GENERATED_BODY</code> 和 <code>GENERATED_BODY_LEGACY</code> 最终指向宏 <code>BODY_MACRO_COMBINE_INNER</code>，只是后缀不同而已</p>
+</div>
 <pre><code class="language-c++">// This pair of macros is used to help implement GENERATED_BODY() and GENERATED_USTRUCT_BODY()
 #define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D
 #define BODY_MACRO_COMBINE(A,B,C,D) BODY_MACRO_COMBINE_INNER(A,B,C,D)
@@ -283,14 +286,14 @@
 #define GENERATED_IINTERFACE_BODY(...) GENERATED_BODY_LEGACY()
 </code></pre>
 <h2 id="body_macro_combine_inner">BODY_MACRO_COMBINE_INNER<a class="headerlink" href="#body_macro_combine_inner" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title"><code>#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D</code></p>
 <ul>
-<li><code>#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D</code><ul>
 <li>通过传入的字符串组合成一个新的宏，对应的宏定义在 <code>"XX.generated.h"</code> 头文件中</li>
 <li><code>"XX.generated.h"</code> 可以在 <code>MyProject/Intermediate/Build/Win64</code> 目录下找到</li>
+<li>在 <code>"XX.generated.h"</code> 的最下方可以看到 <code>#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D</code> 生成的字符串对应的宏定义</li>
 </ul>
-</li>
-</ul>
-<p>在 <code>"XX.generated.h"</code> 的最下方可以看到 <code>#define BODY_MACRO_COMBINE_INNER(A,B,C,D) A##B##C##D</code> 生成的字符串对应的宏定义</p>
+</div>
 <pre><code class="language-c++">#define MyProject_Source_MyProject_Public_MyPlayerState_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
@@ -314,19 +317,19 @@ private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 </code></pre>
 <h2 id="constructors">CONSTRUCTORS<a class="headerlink" href="#constructors" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">CONSTRUCTORS</p>
 <ul>
-<li><code>MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS</code><ul>
-<li><code>NO_API AMyPlayerState(const FObjectInitializer&amp; ObjectInitializer)</code>;</li>
-<li><code>DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMyPlayerState)</code></li>
-<li>带参数 <code>const FObjectInitializer&amp; ObjectInitializer</code> 的构造函数</li>
+<li>带参数 <code>const FObjectInitializer&amp; ObjectInitializer</code> 的构造函数<ul>
+<li><code>MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS</code></li>
 </ul>
 </li>
-<li><code>MyProject_Source_MyProject_Public_MyPlayerState_h_16_ENHANCED_CONSTRUCTORS</code><ul>
-<li><code>DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMyPlayerState)</code></li>
-<li>默认无参构造函数</li>
+<li>默认无参构造函数<ul>
+<li><code>MyProject_Source_MyProject_Public_MyPlayerState_h_16_ENHANCED_CONSTRUCTORS</code></li>
 </ul>
 </li>
 </ul>
+</div>
 <pre><code class="language-c++">#define MyProject_Source_MyProject_Public_MyPlayerState_h_16_STANDARD_CONSTRUCTORS \
     /** Standard constructor, called after all reflected properties have been initialized */ \
     NO_API AMyPlayerState(const FObjectInitializer&amp; ObjectInitializer); \
@@ -350,17 +353,20 @@ public: \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyPlayerState); \
     DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMyPlayerState)
 </code></pre>
-<h2 id="define_default_constructor_call-define_default_object_initializer_constructor_call">DEFINE_DEFAULT_CONSTRUCTOR_CALL 和 DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL<a class="headerlink" href="#define_default_constructor_call-define_default_object_initializer_constructor_call" title="Permanent link">#</a></h2>
+<h2 id="constructor_call">CONSTRUCTOR_CALL<a class="headerlink" href="#constructor_call" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">CONSTRUCTOR_CALL</p>
 <ul>
-<li><code>DEFINE_DEFAULT_CONSTRUCTOR_CALL</code><ul>
-<li>无参构造函数构造器</li>
+<li>无参构造函数构造器<ul>
+<li><code>DEFINE_DEFAULT_CONSTRUCTOR_CALL</code></li>
 </ul>
 </li>
-<li><code>DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL</code><ul>
-<li>带参数 <code>const FObjectInitializer&amp; X</code>的构造函数构造器</li>
+<li>带参数 <code>const FObjectInitializer&amp; X</code>的构造函数构造器<ul>
+<li><code>DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL</code></li>
 </ul>
 </li>
 </ul>
+</div>
 <pre><code class="language-c++">//ObjectMacros.h
 #define DEFINE_DEFAULT_CONSTRUCTOR_CALL(TClass) \
     static void __DefaultConstructor(const FObjectInitializer&amp; X) { new((EInternal*)X.GetObj())TClass; }
