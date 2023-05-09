@@ -21,6 +21,7 @@ nav:
         - 自动编译新创建的C++类: UE4/自动编译新创建的C++类.md
         - 部署iOS打包环境: UE4/部署iOS打包环境.md
         - 生成xcode工程文件: UE4/生成xcode工程文件.md
+        - 批量修改某个文件: UE4/批量修改某个文件.md
         - 多人模式:
             - Client-to-Server: UE4/多人模式/Client-to-Server.md
             - DS-RecieveClient: UE4/多人模式/DS-RecieveClient.md
